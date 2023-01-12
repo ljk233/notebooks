@@ -1,0 +1,13 @@
+# Enable banner style title blocks
+title-block-banner: false
+
+freeze: true
+
+author: "Liam Kelly"
+format:
+  html: 
+    code-tools: true
+    code-fold: false
+    code-line-numbers: true
+    toc: true
+    toc-depth: 3
