@@ -11,7 +11,21 @@
     "href": "index.html",
     "title": "LaughingRook",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Modified - Oldest\n        \n         \n          Modified - Newest\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\nPost With Code\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\nJan 5, 2023\n\n\n\n\n\n1/5/23, 5:22:17 PM\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\nnews\n\n\n\n\nJan 2, 2023\n\n\n\n\n\n1/5/23, 5:22:17 PM\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Modified - Oldest\n        \n         \n          Modified - Newest\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\nModel A Discrete Random Variable\n\n\n\nProbability\n\n\nM343\n\n\n\n\nJan 12, 2023\n\n\n\n\n\n1/12/23, 9:22:54 AM\n\n\n\n\n\n\n\n\n\n\nPost With Code\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\nJan 5, 2023\n\n\n\n\n\n1/5/23, 5:22:17 PM\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\nnews\n\n\n\n\nJan 2, 2023\n\n\n\n\n\n1/5/23, 5:22:17 PM\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/20230112-modelling_discrete_rv.html",
+    "href": "posts/20230112-modelling_discrete_rv.html",
+    "title": "Model A Discrete Random Variable",
+    "section": "",
+    "text": "We can model a custom discrete random variable using the rv_discrete class in SciPy.stats."
+  },
+  {
+    "objectID": "posts/20230112-modelling_discrete_rv.html#example",
+    "href": "posts/20230112-modelling_discrete_rv.html#example",
+    "title": "Model A Discrete Random Variable",
+    "section": "Example",
+    "text": "Example\nLet \\(X\\) be a discrete random variable with p.m.f.,\n\n\n\n\\(x\\)\n0\n1\n2\n3\n\n\n\n\n\\(p(x)\\)\n0.4\n0.15\n0.1\n0.35\n\n\n\nImport rv_discrete.\n\nfrom scipy.stats import rv_discrete\n\nInitialise xs and ps, the event space and the probability of an event occurring.\n\nxs = tuple([*range(4)])      # event space\nps = (0.4, 0.15, 0.1, 0.35)  # p(event)\n\nInitialise the random variable.\n\nx = rv_discrete(values=(xs, ps))\n\nCheck that x has initialised as expected.\n\nassert x.mean() == 1.4\nassert all(x.pmf(xs) == ps)\nprint('Test complete.')\n\nTest complete."
   },
   {
     "objectID": "posts/post-with-code/index.html",
