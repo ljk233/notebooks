@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Liam Kelly">
-<meta name="dcterms.date" content="2023-01-12">
+<meta name="dcterms.date" content="2023-01-13">
 
-<title>LaughingRook - Model A Discrete Random Variable</title>
+<title>LaughingRook - Chaining Functions with ChainMap</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -124,7 +124,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   }
 }</script>
 
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -172,7 +171,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul>
   <li><a href="#problem" id="toc-problem" class="nav-link active" data-scroll-target="#problem">Problem</a></li>
   <li><a href="#solution" id="toc-solution" class="nav-link" data-scroll-target="#solution">Solution</a></li>
-  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
   </ul>
 </nav>
     </div>
@@ -181,10 +179,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Model A Discrete Random Variable</h1>
+<div class="quarto-title-block"><div><h1 class="title">Chaining Functions with ChainMap</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
   <div class="quarto-categories">
-    <div class="quarto-category">Probability</div>
-    <div class="quarto-category">M343</div>
+    <div class="quarto-category">List</div>
   </div>
   </div>
 
@@ -202,7 +199,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 12, 2023</p>
+      <p class="date">January 13, 2023</p>
     </div>
   </div>
   
@@ -214,64 +211,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <section id="problem" class="level2">
 <h2 class="anchored" data-anchor-id="problem">Problem</h2>
-<p>We would like to model a <strong>discrete random variable</strong> (rv) that is distributed by a non-standard probability distribution.</p>
+<p>We have a <code>list</code> that we wish to transform by calling a series of functions.</p>
 </section>
 <section id="solution" class="level2">
 <h2 class="anchored" data-anchor-id="solution">Solution</h2>
-<p>We model it using <em>SciPy’s</em> <code>rv_discrete</code> class.</p>
-</section>
-<section id="example" class="level2">
-<h2 class="anchored" data-anchor-id="example">Example</h2>
-<p>Let <span class="math inline">\(X\)</span> be a discrete rv that has the p.m.f.</p>
-<table class="table">
-<thead>
-<tr class="header">
-<th><span class="math inline">\(x\)</span></th>
-<th>0</th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">\(p(x)\)</span></td>
-<td>0.1</td>
-<td>0.2</td>
-<td>0.4</td>
-<td>0.2</td>
-<td>0.1</td>
-</tr>
-</tbody>
-</table>
-<p>Import the depedencies.</p>
+<p>We define a new class called <code>ChainMap</code> that has the following methods.</p>
 <div class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats <span class="im">as</span> st</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="im">from</span> seaborn <span class="im">import</span> objects <span class="im">as</span> so</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>To initialise an instance of <code>rv_discrete</code>, we require both the <em>event space</em> and the probability associated with each <em>event</em>.</p>
-<p>Let <em>xk</em> and <em>pk</em> be the event space and probability of each event, such that for <strong>P</strong>(<em>xk</em>[<em>i</em>]) = <em>pk</em>[<em>i</em>], <em>i</em> ∈ [0, 1, 2, 3, 4].</p>
-<div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>xk <span class="op">=</span> <span class="bu">tuple</span>([<span class="op">*</span><span class="bu">range</span>(<span class="dv">5</span>)])</span>
-<span id="cb2-2"><a href="#cb2-2"></a>pk <span class="op">=</span> <span class="bu">tuple</span>([<span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.2</span>, <span class="fl">0.1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Initialise <em>x</em>, an instance <code>rv_discrete</code>, passing (<em>xk</em>, <em>pk</em>) as an actual argument for the <code>values</code> parameter.</p>
-<div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>x <span class="op">=</span> st.rv_discrete(values<span class="op">=</span>(xk, pk))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Plot the p.m.f. of <span class="math inline">\(X\)</span>.</p>
-<div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>(</span>
-<span id="cb4-2"><a href="#cb4-2"></a>    so.Plot(x<span class="op">=</span>xk, y<span class="op">=</span>x.pmf(xk))</span>
-<span id="cb4-3"><a href="#cb4-3"></a>    .add(so.Bar())</span>
-<span id="cb4-4"><a href="#cb4-4"></a>    .label(x<span class="op">=</span><span class="st">'X'</span>, y<span class="op">=</span><span class="st">'p(x)'</span>, title<span class="op">=</span><span class="st">'Probability distribution'</span>)</span>
-<span id="cb4-5"><a href="#cb4-5"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
-<p><img src="20230112-modelling_discrete_rv_files/figure-html/cell-5-output-1.png" width="599" height="445"></p>
-</div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">from</span> copy <span class="im">import</span> deepcopy</span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="kw">class</span> ChainMap:</span>
+<span id="cb1-5"><a href="#cb1-5"></a>    <span class="co">"""</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="co">    """</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a></span>
+<span id="cb1-8"><a href="#cb1-8"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb1-9"><a href="#cb1-9"></a>        <span class="co">"""Initialise and return an new instance of self.</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="co">        """</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a>        <span class="va">self</span>.funcs <span class="op">=</span> []</span>
+<span id="cb1-12"><a href="#cb1-12"></a></span>
+<span id="cb1-13"><a href="#cb1-13"></a>    <span class="kw">def</span> add(<span class="va">self</span>, func) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb1-14"><a href="#cb1-14"></a>        <span class="co">"""Add func to the chain.</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="co">        """</span></span>
+<span id="cb1-16"><a href="#cb1-16"></a>        <span class="va">self</span>.funcs.append(func)</span>
+<span id="cb1-17"><a href="#cb1-17"></a></span>
+<span id="cb1-18"><a href="#cb1-18"></a>    <span class="kw">def</span> run(<span class="va">self</span>, a: <span class="bu">list</span>) <span class="op">-&gt;</span> <span class="bu">list</span>:</span>
+<span id="cb1-19"><a href="#cb1-19"></a>        <span class="co">"""Execute the chain of function on a copy of a.</span></span>
+<span id="cb1-20"><a href="#cb1-20"></a><span class="co">        If deepcopy is true, then a deepcopy of a is taken instead.</span></span>
+<span id="cb1-21"><a href="#cb1-21"></a><span class="co">        """</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
+
+<!-- -->
 
 </section>
 
@@ -459,7 +429,59 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb2" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">---</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="an">title:</span><span class="co"> Chaining Functions with ChainMap</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="an">date:</span><span class="co"> '2023-01-13'</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="an">categories:</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="co">  - List</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="an">jupyter:</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="co">  jupytext:</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="co">    text_representation:</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="co">      extension: .qmd</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="co">      format_name: quarto</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="co">      format_version: '1.0'</span></span>
+<span id="cb2-12"><a href="#cb2-12"></a><span class="co">      jupytext_version: 1.14.4</span></span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="co">  kernelspec:</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a><span class="co">    display_name: Python 3 (ipykernel)</span></span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="co">    language: python</span></span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="co">    name: python3</span></span>
+<span id="cb2-17"><a href="#cb2-17"></a><span class="co">---</span></span>
+<span id="cb2-18"><a href="#cb2-18"></a></span>
+<span id="cb2-19"><a href="#cb2-19"></a><span class="fu">## Problem</span></span>
+<span id="cb2-20"><a href="#cb2-20"></a></span>
+<span id="cb2-21"><a href="#cb2-21"></a>We have a <span class="in">`list`</span> that we wish to transform by calling a series of functions.</span>
+<span id="cb2-22"><a href="#cb2-22"></a></span>
+<span id="cb2-23"><a href="#cb2-23"></a><span class="fu">## Solution</span></span>
+<span id="cb2-24"><a href="#cb2-24"></a></span>
+<span id="cb2-25"><a href="#cb2-25"></a>We define a new class called <span class="in">`ChainMap`</span> that has the following methods.</span>
+<span id="cb2-26"><a href="#cb2-26"></a></span>
+<span id="cb2-29"><a href="#cb2-29"></a><span class="in">```{python}</span></span>
+<span id="cb2-30"><a href="#cb2-30"></a><span class="im">from</span> copy <span class="im">import</span> deepcopy</span>
+<span id="cb2-31"><a href="#cb2-31"></a></span>
+<span id="cb2-32"><a href="#cb2-32"></a></span>
+<span id="cb2-33"><a href="#cb2-33"></a><span class="kw">class</span> ChainMap:</span>
+<span id="cb2-34"><a href="#cb2-34"></a>    <span class="co">"""</span></span>
+<span id="cb2-35"><a href="#cb2-35"></a><span class="co">    """</span></span>
+<span id="cb2-36"><a href="#cb2-36"></a></span>
+<span id="cb2-37"><a href="#cb2-37"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb2-38"><a href="#cb2-38"></a>        <span class="co">"""Initialise and return an new instance of self.</span></span>
+<span id="cb2-39"><a href="#cb2-39"></a><span class="co">        """</span></span>
+<span id="cb2-40"><a href="#cb2-40"></a>        <span class="va">self</span>.funcs <span class="op">=</span> []</span>
+<span id="cb2-41"><a href="#cb2-41"></a></span>
+<span id="cb2-42"><a href="#cb2-42"></a>    <span class="kw">def</span> add(<span class="va">self</span>, func) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb2-43"><a href="#cb2-43"></a>        <span class="co">"""Add func to the chain.</span></span>
+<span id="cb2-44"><a href="#cb2-44"></a><span class="co">        """</span></span>
+<span id="cb2-45"><a href="#cb2-45"></a>        <span class="va">self</span>.funcs.append(func)</span>
+<span id="cb2-46"><a href="#cb2-46"></a></span>
+<span id="cb2-47"><a href="#cb2-47"></a>    <span class="kw">def</span> run(<span class="va">self</span>, a: <span class="bu">list</span>) <span class="op">-&gt;</span> <span class="bu">list</span>:</span>
+<span id="cb2-48"><a href="#cb2-48"></a>        <span class="co">"""Execute the chain of function on a copy of a.</span></span>
+<span id="cb2-49"><a href="#cb2-49"></a><span class="co">        If deepcopy is true, then a deepcopy of a is taken instead.</span></span>
+<span id="cb2-50"><a href="#cb2-50"></a><span class="co">        """</span></span>
+<span id="cb2-51"><a href="#cb2-51"></a>        </span>
+<span id="cb2-52"><a href="#cb2-52"></a><span class="in">```</span></span>
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
 </div> <!-- /content -->
 
 

@@ -181,10 +181,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Model A Discrete Random Variable</h1>
+<div class="quarto-title-block"><div><h1 class="title">Model A Discrete Random Variable</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
   <div class="quarto-categories">
-    <div class="quarto-category">Probability</div>
     <div class="quarto-category">M343</div>
+    <div class="quarto-category">Probability</div>
   </div>
   </div>
 
@@ -247,8 +247,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 <p>Import the depedencies.</p>
 <div class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats <span class="im">as</span> st</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="im">from</span> seaborn <span class="im">import</span> objects <span class="im">as</span> so</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats <span class="im">as</span> st</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>To initialise an instance of <code>rv_discrete</code>, we require both the <em>event space</em> and the probability associated with each <em>event</em>.</p>
 <p>Let <em>xk</em> and <em>pk</em> be the event space and probability of each event, such that for <strong>P</strong>(<em>xk</em>[<em>i</em>]) = <em>pk</em>[<em>i</em>], <em>i</em> ∈ [0, 1, 2, 3, 4].</p>
@@ -256,22 +255,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>xk <span class="op">=</span> <span class="bu">tuple</span>([<span class="op">*</span><span class="bu">range</span>(<span class="dv">5</span>)])</span>
 <span id="cb2-2"><a href="#cb2-2"></a>pk <span class="op">=</span> <span class="bu">tuple</span>([<span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.2</span>, <span class="fl">0.1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Initialise <em>x</em>, an instance <code>rv_discrete</code>, passing (<em>xk</em>, <em>pk</em>) as an actual argument for the <code>values</code> parameter.</p>
+<p>Initialise <em>rv</em>, an instance <code>rv_discrete</code>, passing (<em>xk</em>, <em>pk</em>) as an actual argument for the <code>values</code> parameter.</p>
 <div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>x <span class="op">=</span> st.rv_discrete(values<span class="op">=</span>(xk, pk))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Plot the p.m.f. of <span class="math inline">\(X\)</span>.</p>
-<div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>(</span>
-<span id="cb4-2"><a href="#cb4-2"></a>    so.Plot(x<span class="op">=</span>xk, y<span class="op">=</span>x.pmf(xk))</span>
-<span id="cb4-3"><a href="#cb4-3"></a>    .add(so.Bar())</span>
-<span id="cb4-4"><a href="#cb4-4"></a>    .label(x<span class="op">=</span><span class="st">'X'</span>, y<span class="op">=</span><span class="st">'p(x)'</span>, title<span class="op">=</span><span class="st">'Probability distribution'</span>)</span>
-<span id="cb4-5"><a href="#cb4-5"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
-<p><img src="20230112-modelling_discrete_rv_files/figure-html/cell-5-output-1.png" width="599" height="445"></p>
-</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>rv <span class="op">=</span> st.rv_discrete(values<span class="op">=</span>(xk, pk))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
+
+<!-- -->
 
 </section>
 
@@ -459,7 +449,64 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb4" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">---</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="an">title:</span><span class="co"> Model A Discrete Random Variable</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="an">date:</span><span class="co"> '2023-01-12'</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="an">categories:</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="co">  - M343</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="co">  - Probability</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="an">jupyter:</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="co">  jupytext:</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="co">    text_representation:</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a><span class="co">      extension: .qmd</span></span>
+<span id="cb4-11"><a href="#cb4-11"></a><span class="co">      format_name: quarto</span></span>
+<span id="cb4-12"><a href="#cb4-12"></a><span class="co">      format_version: '1.0'</span></span>
+<span id="cb4-13"><a href="#cb4-13"></a><span class="co">      jupytext_version: 1.14.4</span></span>
+<span id="cb4-14"><a href="#cb4-14"></a><span class="co">  kernelspec:</span></span>
+<span id="cb4-15"><a href="#cb4-15"></a><span class="co">    display_name: lr_stats</span></span>
+<span id="cb4-16"><a href="#cb4-16"></a><span class="co">    language: python</span></span>
+<span id="cb4-17"><a href="#cb4-17"></a><span class="co">    name: lr_stats</span></span>
+<span id="cb4-18"><a href="#cb4-18"></a><span class="co">---</span></span>
+<span id="cb4-19"><a href="#cb4-19"></a></span>
+<span id="cb4-20"><a href="#cb4-20"></a><span class="fu">## Problem</span></span>
+<span id="cb4-21"><a href="#cb4-21"></a></span>
+<span id="cb4-22"><a href="#cb4-22"></a>We would like to model a **discrete random variable** (rv) that is distributed by a non-standard probability distribution.</span>
+<span id="cb4-23"><a href="#cb4-23"></a></span>
+<span id="cb4-24"><a href="#cb4-24"></a><span class="fu">## Solution</span></span>
+<span id="cb4-25"><a href="#cb4-25"></a></span>
+<span id="cb4-26"><a href="#cb4-26"></a>We model it using *SciPy's* <span class="in">`rv_discrete`</span> class.</span>
+<span id="cb4-27"><a href="#cb4-27"></a></span>
+<span id="cb4-28"><a href="#cb4-28"></a><span class="fu">## Example</span></span>
+<span id="cb4-29"><a href="#cb4-29"></a></span>
+<span id="cb4-30"><a href="#cb4-30"></a>Let $X$ be a discrete rv that has the p.m.f.</span>
+<span id="cb4-31"><a href="#cb4-31"></a></span>
+<span id="cb4-32"><a href="#cb4-32"></a>| $x$    | 0   | 1   | 2   | 3   | 4   |</span>
+<span id="cb4-33"><a href="#cb4-33"></a>|--------|-----|-----|-----|-----|-----|</span>
+<span id="cb4-34"><a href="#cb4-34"></a>| $p(x)$ | 0.1 | 0.2 | 0.4 | 0.2 | 0.1 |</span>
+<span id="cb4-35"><a href="#cb4-35"></a></span>
+<span id="cb4-36"><a href="#cb4-36"></a>Import the depedencies.</span>
+<span id="cb4-37"><a href="#cb4-37"></a></span>
+<span id="cb4-40"><a href="#cb4-40"></a><span class="in">```{python}</span></span>
+<span id="cb4-41"><a href="#cb4-41"></a><span class="im">from</span> scipy <span class="im">import</span> stats <span class="im">as</span> st</span>
+<span id="cb4-42"><a href="#cb4-42"></a><span class="in">```</span></span>
+<span id="cb4-43"><a href="#cb4-43"></a></span>
+<span id="cb4-44"><a href="#cb4-44"></a>To initialise an instance of <span class="in">`rv_discrete`</span>, we require both the *event space* and the probability associated with each *event*.</span>
+<span id="cb4-45"><a href="#cb4-45"></a></span>
+<span id="cb4-46"><a href="#cb4-46"></a>Let *xk* and *pk* be the event space and probability of each event, such that for **P**(*xk*[*i*]) = *pk*[*i*], *i* ∈ <span class="co">[</span><span class="ot">0, 1, 2, 3, 4</span><span class="co">]</span>.</span>
+<span id="cb4-47"><a href="#cb4-47"></a></span>
+<span id="cb4-50"><a href="#cb4-50"></a><span class="in">```{python}</span></span>
+<span id="cb4-51"><a href="#cb4-51"></a>xk <span class="op">=</span> <span class="bu">tuple</span>([<span class="op">*</span><span class="bu">range</span>(<span class="dv">5</span>)])</span>
+<span id="cb4-52"><a href="#cb4-52"></a>pk <span class="op">=</span> <span class="bu">tuple</span>([<span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.2</span>, <span class="fl">0.1</span>])</span>
+<span id="cb4-53"><a href="#cb4-53"></a><span class="in">```</span></span>
+<span id="cb4-54"><a href="#cb4-54"></a></span>
+<span id="cb4-55"><a href="#cb4-55"></a>Initialise *rv*, an instance `rv_discrete`, passing (*xk*, *pk*) as an actual argument for the <span class="in">`values`</span> parameter.</span>
+<span id="cb4-56"><a href="#cb4-56"></a></span>
+<span id="cb4-59"><a href="#cb4-59"></a><span class="in">```{python}</span></span>
+<span id="cb4-60"><a href="#cb4-60"></a>rv <span class="op">=</span> st.rv_discrete(values<span class="op">=</span>(xk, pk))</span>
+<span id="cb4-61"><a href="#cb4-61"></a><span class="in">```</span></span>
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
 </div> <!-- /content -->
 
 

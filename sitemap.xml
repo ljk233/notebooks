@@ -2,22 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ljk233.github.io/notebooks/about.html</loc>
-    <lastmod>2023-01-12T09:23:16.834Z</lastmod>
+    <lastmod>2023-01-13T18:21:07.495Z</lastmod>
   </url>
   <url>
     <loc>https://ljk233.github.io/notebooks/index.html</loc>
-    <lastmod>2023-01-12T09:23:17.251Z</lastmod>
+    <lastmod>2023-01-13T18:21:07.888Z</lastmod>
   </url>
   <url>
-    <loc>https://ljk233.github.io/notebooks/posts/20230112-modelling_discrete_rv.html</loc>
-    <lastmod>2023-01-12T09:23:17.568Z</lastmod>
+    <loc>https://ljk233.github.io/notebooks/posts/20230112-modelling_discrete_rvs.html</loc>
+    <lastmod>2023-01-13T18:21:08.258Z</lastmod>
   </url>
   <url>
-    <loc>https://ljk233.github.io/notebooks/posts/post-with-code/index.html</loc>
-    <lastmod>2023-01-12T09:23:17.866Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ljk233.github.io/notebooks/posts/welcome/index.html</loc>
-    <lastmod>2023-01-12T09:23:18.151Z</lastmod>
+    <loc>https://ljk233.github.io/notebooks/posts/20230113-modelling_cts_rvs.html</loc>
+    <lastmod>2023-01-13T18:21:08.647Z</lastmod>
   </url>
 </urlset>

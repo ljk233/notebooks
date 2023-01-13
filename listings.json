@@ -2,9 +2,8 @@
   {
     "listing": "/index.html",
     "items": [
-      "/posts/20230112-modelling_discrete_rv.html",
-      "/posts/post-with-code/index.html",
-      "/posts/welcome/index.html"
+      "/posts/20230113-modelling_cts_rvs.html",
+      "/posts/20230112-modelling_discrete_rvs.html"
     ]
   }
 ]

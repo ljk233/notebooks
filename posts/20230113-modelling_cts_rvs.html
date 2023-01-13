@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Liam Kelly">
-<meta name="dcterms.date" content="2023-01-12">
+<meta name="dcterms.date" content="2023-01-13">
 
-<title>LaughingRook - Model A Discrete Random Variable</title>
+<title>LaughingRook - Model A Continuous Random Variable</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -181,10 +181,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Model A Discrete Random Variable</h1>
+<div class="quarto-title-block"><div><h1 class="title">Model A Continuous Random Variable</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
   <div class="quarto-categories">
-    <div class="quarto-category">Probability</div>
     <div class="quarto-category">M343</div>
+    <div class="quarto-category">Probability</div>
   </div>
   </div>
 
@@ -202,7 +202,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 12, 2023</p>
+      <p class="date">January 13, 2023</p>
     </div>
   </div>
   
@@ -214,64 +214,52 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <section id="problem" class="level2">
 <h2 class="anchored" data-anchor-id="problem">Problem</h2>
-<p>We would like to model a <strong>discrete random variable</strong> (rv) that is distributed by a non-standard probability distribution.</p>
+<p>We would like to model a <strong>continuous random variable</strong> (rv) that is distributed by a non-standard probability distribution.</p>
 </section>
 <section id="solution" class="level2">
 <h2 class="anchored" data-anchor-id="solution">Solution</h2>
-<p>We model it using <em>SciPy’s</em> <code>rv_discrete</code> class.</p>
+<p>We model it using <em>SciPy’s</em> <code>rv_continuous</code> class.</p>
 </section>
 <section id="example" class="level2">
 <h2 class="anchored" data-anchor-id="example">Example</h2>
-<p>Let <span class="math inline">\(X\)</span> be a discrete rv that has the p.m.f.</p>
-<table class="table">
-<thead>
-<tr class="header">
-<th><span class="math inline">\(x\)</span></th>
-<th>0</th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">\(p(x)\)</span></td>
-<td>0.1</td>
-<td>0.2</td>
-<td>0.4</td>
-<td>0.2</td>
-<td>0.1</td>
-</tr>
-</tbody>
-</table>
-<p>Import the depedencies.</p>
+<p>Let <span class="math inline">\(T\)</span> be a continuous rv that has p.d.f.,</p>
+<p><span class="math display">\[
+f(t) = \frac{t}{48}, \enspace 2 \le t \le 10.
+\]</span></p>
+<p>Import the dependencies.</p>
 <div class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats <span class="im">as</span> st</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="im">from</span> seaborn <span class="im">import</span> objects <span class="im">as</span> so</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats <span class="im">as</span> st</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>To initialise an instance of <code>rv_discrete</code>, we require both the <em>event space</em> and the probability associated with each <em>event</em>.</p>
-<p>Let <em>xk</em> and <em>pk</em> be the event space and probability of each event, such that for <strong>P</strong>(<em>xk</em>[<em>i</em>]) = <em>pk</em>[<em>i</em>], <em>i</em> ∈ [0, 1, 2, 3, 4].</p>
+<p>Declare a new subclass of <code>rv_continuous</code>, and override the <code>_pdf</code> method.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We override the constructor here because the <span class="math inline">\(T\)</span> is bounded.</p>
+<p>If it was unbounded, then we do not need to override the constructor.</p>
+</div>
+</div>
 <div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>xk <span class="op">=</span> <span class="bu">tuple</span>([<span class="op">*</span><span class="bu">range</span>(<span class="dv">5</span>)])</span>
-<span id="cb2-2"><a href="#cb2-2"></a>pk <span class="op">=</span> <span class="bu">tuple</span>([<span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.2</span>, <span class="fl">0.1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">class</span> t_gen(st.rv_continuous):</span>
+<span id="cb2-2"><a href="#cb2-2"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb2-3"><a href="#cb2-3"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(a<span class="op">=</span><span class="dv">2</span>, b<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb2-4"><a href="#cb2-4"></a></span>
+<span id="cb2-5"><a href="#cb2-5"></a>    <span class="kw">def</span> _pdf(<span class="va">self</span>, t):</span>
+<span id="cb2-6"><a href="#cb2-6"></a>        <span class="cf">return</span> t <span class="op">/</span> <span class="dv">48</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Initialise <em>x</em>, an instance <code>rv_discrete</code>, passing (<em>xk</em>, <em>pk</em>) as an actual argument for the <code>values</code> parameter.</p>
+<p>Initialise <em>t</em>, an instance <code>t_gen</code>.</p>
 <div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>x <span class="op">=</span> st.rv_discrete(values<span class="op">=</span>(xk, pk))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Plot the p.m.f. of <span class="math inline">\(X\)</span>.</p>
-<div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>(</span>
-<span id="cb4-2"><a href="#cb4-2"></a>    so.Plot(x<span class="op">=</span>xk, y<span class="op">=</span>x.pmf(xk))</span>
-<span id="cb4-3"><a href="#cb4-3"></a>    .add(so.Bar())</span>
-<span id="cb4-4"><a href="#cb4-4"></a>    .label(x<span class="op">=</span><span class="st">'X'</span>, y<span class="op">=</span><span class="st">'p(x)'</span>, title<span class="op">=</span><span class="st">'Probability distribution'</span>)</span>
-<span id="cb4-5"><a href="#cb4-5"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
-<p><img src="20230112-modelling_discrete_rv_files/figure-html/cell-5-output-1.png" width="599" height="445"></p>
-</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>t <span class="op">=</span> t_gen()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
+
+<!-- -->
 
 </section>
 
@@ -459,7 +447,72 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb4" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">---</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="an">title:</span><span class="co"> Model A Continuous Random Variable</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="an">date:</span><span class="co"> '2023-01-13'</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="an">categories:</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="co">  - M343</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="co">  - Probability</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="an">jupyter:</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="co">  jupytext:</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="co">    text_representation:</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a><span class="co">      extension: .qmd</span></span>
+<span id="cb4-11"><a href="#cb4-11"></a><span class="co">      format_name: quarto</span></span>
+<span id="cb4-12"><a href="#cb4-12"></a><span class="co">      format_version: '1.0'</span></span>
+<span id="cb4-13"><a href="#cb4-13"></a><span class="co">      jupytext_version: 1.14.4</span></span>
+<span id="cb4-14"><a href="#cb4-14"></a><span class="co">  kernelspec:</span></span>
+<span id="cb4-15"><a href="#cb4-15"></a><span class="co">    display_name: lr_stats</span></span>
+<span id="cb4-16"><a href="#cb4-16"></a><span class="co">    language: python</span></span>
+<span id="cb4-17"><a href="#cb4-17"></a><span class="co">    name: lr_stats</span></span>
+<span id="cb4-18"><a href="#cb4-18"></a><span class="co">---</span></span>
+<span id="cb4-19"><a href="#cb4-19"></a></span>
+<span id="cb4-20"><a href="#cb4-20"></a><span class="fu">## Problem</span></span>
+<span id="cb4-21"><a href="#cb4-21"></a></span>
+<span id="cb4-22"><a href="#cb4-22"></a>We would like to model a **continuous random variable** (rv) that is distributed by a non-standard probability distribution.</span>
+<span id="cb4-23"><a href="#cb4-23"></a></span>
+<span id="cb4-24"><a href="#cb4-24"></a><span class="fu">## Solution</span></span>
+<span id="cb4-25"><a href="#cb4-25"></a></span>
+<span id="cb4-26"><a href="#cb4-26"></a>We model it using *SciPy's* <span class="in">`rv_continuous`</span> class.</span>
+<span id="cb4-27"><a href="#cb4-27"></a></span>
+<span id="cb4-28"><a href="#cb4-28"></a><span class="fu">## Example</span></span>
+<span id="cb4-29"><a href="#cb4-29"></a></span>
+<span id="cb4-30"><a href="#cb4-30"></a>Let $T$ be a continuous rv that has p.d.f.,</span>
+<span id="cb4-31"><a href="#cb4-31"></a></span>
+<span id="cb4-32"><a href="#cb4-32"></a>$$</span>
+<span id="cb4-33"><a href="#cb4-33"></a>f(t) = \frac{t}{48}, \enspace 2 \le t \le 10.</span>
+<span id="cb4-34"><a href="#cb4-34"></a>$$</span>
+<span id="cb4-35"><a href="#cb4-35"></a></span>
+<span id="cb4-36"><a href="#cb4-36"></a>Import the dependencies.</span>
+<span id="cb4-37"><a href="#cb4-37"></a></span>
+<span id="cb4-40"><a href="#cb4-40"></a><span class="in">```{python}</span></span>
+<span id="cb4-41"><a href="#cb4-41"></a><span class="im">from</span> scipy <span class="im">import</span> stats <span class="im">as</span> st</span>
+<span id="cb4-42"><a href="#cb4-42"></a><span class="in">```</span></span>
+<span id="cb4-43"><a href="#cb4-43"></a></span>
+<span id="cb4-44"><a href="#cb4-44"></a>Declare a new subclass of <span class="in">`rv_continuous`</span>, and override the <span class="in">`_pdf`</span> method.</span>
+<span id="cb4-45"><a href="#cb4-45"></a></span>
+<span id="cb4-46"><a href="#cb4-46"></a>:::{.callout-note}</span>
+<span id="cb4-47"><a href="#cb4-47"></a>We override the constructor here because the $T$ is bounded.</span>
+<span id="cb4-48"><a href="#cb4-48"></a></span>
+<span id="cb4-49"><a href="#cb4-49"></a>If it was unbounded, then we do not need to override the constructor.</span>
+<span id="cb4-50"><a href="#cb4-50"></a>:::</span>
+<span id="cb4-51"><a href="#cb4-51"></a></span>
+<span id="cb4-54"><a href="#cb4-54"></a><span class="in">```{python}</span></span>
+<span id="cb4-55"><a href="#cb4-55"></a><span class="kw">class</span> t_gen(st.rv_continuous):</span>
+<span id="cb4-56"><a href="#cb4-56"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb4-57"><a href="#cb4-57"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(a<span class="op">=</span><span class="dv">2</span>, b<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb4-58"><a href="#cb4-58"></a></span>
+<span id="cb4-59"><a href="#cb4-59"></a>    <span class="kw">def</span> _pdf(<span class="va">self</span>, t):</span>
+<span id="cb4-60"><a href="#cb4-60"></a>        <span class="cf">return</span> t <span class="op">/</span> <span class="dv">48</span></span>
+<span id="cb4-61"><a href="#cb4-61"></a><span class="in">```</span></span>
+<span id="cb4-62"><a href="#cb4-62"></a></span>
+<span id="cb4-63"><a href="#cb4-63"></a>Initialise *t*, an instance <span class="in">`t_gen`</span>.</span>
+<span id="cb4-64"><a href="#cb4-64"></a></span>
+<span id="cb4-67"><a href="#cb4-67"></a><span class="in">```{python}</span></span>
+<span id="cb4-68"><a href="#cb4-68"></a>t <span class="op">=</span> t_gen()</span>
+<span id="cb4-69"><a href="#cb4-69"></a><span class="in">```</span></span>
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
 </div> <!-- /content -->
 
 
