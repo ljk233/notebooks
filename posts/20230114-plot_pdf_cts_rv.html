@@ -470,38 +470,40 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb5-23"><a href="#cb5-23"></a></span>
 <span id="cb5-24"><a href="#cb5-24"></a><span class="fu">## Solution</span></span>
 <span id="cb5-25"><a href="#cb5-25"></a></span>
-<span id="cb5-26"><a href="#cb5-26"></a>Import the dependencies.</span>
+<span id="cb5-26"><a href="#cb5-26"></a>We can use the fuction below to produce a line chart of the p.d.f.</span>
 <span id="cb5-27"><a href="#cb5-27"></a></span>
-<span id="cb5-30"><a href="#cb5-30"></a><span class="in">```{python}</span></span>
-<span id="cb5-31"><a href="#cb5-31"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb5-32"><a href="#cb5-32"></a><span class="im">from</span> scipy <span class="im">import</span> stats <span class="im">as</span> st</span>
-<span id="cb5-33"><a href="#cb5-33"></a><span class="im">from</span> seaborn <span class="im">import</span> objects <span class="im">as</span> so</span>
-<span id="cb5-34"><a href="#cb5-34"></a><span class="in">```</span></span>
-<span id="cb5-35"><a href="#cb5-35"></a></span>
-<span id="cb5-36"><a href="#cb5-36"></a>Initialise the random variable.</span>
-<span id="cb5-37"><a href="#cb5-37"></a></span>
-<span id="cb5-38"><a href="#cb5-38"></a>:::{.callout-note}</span>
-<span id="cb5-39"><a href="#cb5-39"></a>We use the normal distribution for this example, but it should work with any instance of <span class="in">`rv_continuous`</span>.</span>
-<span id="cb5-40"><a href="#cb5-40"></a>:::</span>
+<span id="cb5-28"><a href="#cb5-28"></a>:::{.callout-warning}</span>
+<span id="cb5-29"><a href="#cb5-29"></a>This requires <span class="in">`seaborn &gt;= 0.12`</span>.</span>
+<span id="cb5-30"><a href="#cb5-30"></a>:::</span>
+<span id="cb5-31"><a href="#cb5-31"></a></span>
+<span id="cb5-32"><a href="#cb5-32"></a><span class="at">&gt; </span><span class="in">`plot_pdf(rv: rv_continuous) -&gt; so.Plot`</span></span>
+<span id="cb5-33"><a href="#cb5-33"></a></span>
+<span id="cb5-36"><a href="#cb5-36"></a><span class="in">```{python}</span></span>
+<span id="cb5-37"><a href="#cb5-37"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb5-38"><a href="#cb5-38"></a><span class="im">from</span> scipy <span class="im">import</span> stats <span class="im">as</span> st</span>
+<span id="cb5-39"><a href="#cb5-39"></a><span class="im">from</span> seaborn <span class="im">import</span> objects <span class="im">as</span> so</span>
+<span id="cb5-40"><a href="#cb5-40"></a></span>
 <span id="cb5-41"><a href="#cb5-41"></a></span>
-<span id="cb5-44"><a href="#cb5-44"></a><span class="in">```{python}</span></span>
-<span id="cb5-45"><a href="#cb5-45"></a>x <span class="op">=</span> st.norm()</span>
-<span id="cb5-46"><a href="#cb5-46"></a><span class="in">```</span></span>
-<span id="cb5-47"><a href="#cb5-47"></a></span>
-<span id="cb5-48"><a href="#cb5-48"></a>Initialise *xs*, which represents the *event space*.</span>
-<span id="cb5-49"><a href="#cb5-49"></a></span>
-<span id="cb5-52"><a href="#cb5-52"></a><span class="in">```{python}</span></span>
-<span id="cb5-53"><a href="#cb5-53"></a>xs <span class="op">=</span> np.linspace(x.ppf(<span class="fl">0.01</span>), x.ppf(<span class="fl">0.99</span>), num<span class="op">=</span><span class="dv">100</span>)</span>
-<span id="cb5-54"><a href="#cb5-54"></a><span class="in">```</span></span>
+<span id="cb5-42"><a href="#cb5-42"></a><span class="kw">def</span> plot_pdf(rv) <span class="op">-&gt;</span> so.Plot:</span>
+<span id="cb5-43"><a href="#cb5-43"></a>    <span class="co">"""Plot the approximate probability distribution of T, the waiting</span></span>
+<span id="cb5-44"><a href="#cb5-44"></a><span class="co">    time between events.</span></span>
+<span id="cb5-45"><a href="#cb5-45"></a><span class="co">    """</span></span>
+<span id="cb5-46"><a href="#cb5-46"></a>    xs <span class="op">=</span> np.linspace(rv.ppf(<span class="fl">0.005</span>), rv.ppf(<span class="fl">0.995</span>), num<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb5-47"><a href="#cb5-47"></a>    <span class="cf">return</span>(</span>
+<span id="cb5-48"><a href="#cb5-48"></a>        so.Plot(x<span class="op">=</span>xs, y<span class="op">=</span>rv.pdf(xs))</span>
+<span id="cb5-49"><a href="#cb5-49"></a>        .add(so.Line())</span>
+<span id="cb5-50"><a href="#cb5-50"></a>        .label(x<span class="op">=</span><span class="st">'x'</span>, y<span class="op">=</span><span class="st">'f(x)'</span>, title<span class="op">=</span><span class="st">'Probability distribution'</span>)</span>
+<span id="cb5-51"><a href="#cb5-51"></a>    )</span>
+<span id="cb5-52"><a href="#cb5-52"></a><span class="in">```</span></span>
+<span id="cb5-53"><a href="#cb5-53"></a></span>
+<span id="cb5-54"><a href="#cb5-54"></a><span class="fu">## Examples</span></span>
 <span id="cb5-55"><a href="#cb5-55"></a></span>
-<span id="cb5-56"><a href="#cb5-56"></a>Plot the p.d.f.</span>
-<span id="cb5-57"><a href="#cb5-57"></a></span>
-<span id="cb5-60"><a href="#cb5-60"></a><span class="in">```{python}</span></span>
-<span id="cb5-61"><a href="#cb5-61"></a>(</span>
-<span id="cb5-62"><a href="#cb5-62"></a>    so.Plot(x<span class="op">=</span>xs, y<span class="op">=</span>x.pdf(xs))</span>
-<span id="cb5-63"><a href="#cb5-63"></a>    .add(so.Line())</span>
-<span id="cb5-64"><a href="#cb5-64"></a>    .label(x<span class="op">=</span><span class="st">'X'</span>, y<span class="op">=</span><span class="st">'f(x)'</span>, title<span class="op">=</span><span class="st">'Probability distribution'</span>)</span>
-<span id="cb5-65"><a href="#cb5-65"></a>)</span>
+<span id="cb5-58"><a href="#cb5-58"></a><span class="in">```{python}</span></span>
+<span id="cb5-59"><a href="#cb5-59"></a>plot_pdf(st.norm())</span>
+<span id="cb5-60"><a href="#cb5-60"></a><span class="in">```</span></span>
+<span id="cb5-61"><a href="#cb5-61"></a></span>
+<span id="cb5-64"><a href="#cb5-64"></a><span class="in">```{python}</span></span>
+<span id="cb5-65"><a href="#cb5-65"></a>plot_pdf(st.gamma(<span class="dv">2</span>, <span class="dv">5</span>))</span>
 <span id="cb5-66"><a href="#cb5-66"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
