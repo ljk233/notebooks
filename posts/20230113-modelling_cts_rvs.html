@@ -218,7 +218,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="solution" class="level2">
 <h2 class="anchored" data-anchor-id="solution">Solution</h2>
-<p>We model it using <em>SciPy’s</em> <code>rv_continuous</code> class.</p>
+<p>We model it declaring a new class that inherits from <em>SciPy’s</em> <code>rv_continuous</code> class that overrides the <code>_pdf</code> method.</p>
 </section>
 <section id="example" class="level2">
 <h2 class="anchored" data-anchor-id="example">Example</h2>
@@ -241,7 +241,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>We override the constructor here because the <span class="math inline">\(T\)</span> is bounded.</p>
+<p>We override the constructor here because <span class="math inline">\(T\)</span> is bounded.</p>
 <p>If it was unbounded, then we do not need to override the constructor.</p>
 </div>
 </div>
