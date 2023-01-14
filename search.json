@@ -11,7 +11,7 @@
     "href": "index.html",
     "title": "LaughingRook",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Modified - Oldest\n        \n         \n          Modified - Newest\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\nModel A Continuous Random Variable\n\n\n\nM343\n\n\nProbability\n\n\n\n\nJan 13, 2023\n\n\n\n\n\n1/13/23, 8:46:30 AM\n\n\n\n\n\n\n\n\n\n\nModel A Discrete Random Variable\n\n\n\nM343\n\n\nProbability\n\n\n\n\nJan 12, 2023\n\n\n\n\n\n1/13/23, 8:40:05 AM\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Modified - Oldest\n        \n         \n          Modified - Newest\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\nPlot The Probability Density Function Of A Continuous Random Vaiable\n\n\n\nProbability\n\n\nVisualisation\n\n\n\n\nJan 14, 2023\n\n\n\n\n\n1/14/23, 6:32:17 AM\n\n\n\n\n\n\n\n\n\n\nPlot The Probability Mass Function Of A Discrete Random Vaiable\n\n\n\nProbability\n\n\nVisualisation\n\n\n\n\nJan 14, 2023\n\n\n\n\n\n1/14/23, 6:32:34 AM\n\n\n\n\n\n\n\n\n\n\nModel A Continuous Random Variable\n\n\n\nM343\n\n\nProbability\n\n\n\n\nJan 13, 2023\n\n\n\n\n\n1/13/23, 6:27:28 PM\n\n\n\n\n\n\n\n\n\n\nModel A Discrete Random Variable\n\n\n\nM343\n\n\nProbability\n\n\n\n\nJan 12, 2023\n\n\n\n\n\n1/13/23, 6:27:31 PM\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/20230112-modelling_discrete_rvs.html",
@@ -54,5 +54,33 @@
     "title": "Model A Continuous Random Variable",
     "section": "Example",
     "text": "Example\nLet \\(T\\) be a continuous rv that has p.d.f.,\n\\[\nf(t) = \\frac{t}{48}, \\enspace 2 \\le t \\le 10.\n\\]\nImport the dependencies.\n\nfrom scipy import stats as st\n\nDeclare a new subclass of rv_continuous, and override the _pdf method.\n\n\n\n\n\n\nNote\n\n\n\nWe override the constructor here because the \\(T\\) is bounded.\nIf it was unbounded, then we do not need to override the constructor.\n\n\n\nclass t_gen(st.rv_continuous):\n    def __init__(self):\n        super().__init__(a=2, b=10)\n\n    def _pdf(self, t):\n        return t / 48\n\nInitialise t, an instance t_gen.\n\nt = t_gen()"
+  },
+  {
+    "objectID": "posts/20230114-plot_pdf_cts_rv.html",
+    "href": "posts/20230114-plot_pdf_cts_rv.html",
+    "title": "Plot The Probability Density Function Of A Continuous Random Vaiable",
+    "section": "",
+    "text": "We have a continuous random variable whose p.d.f. we would like to visualise."
+  },
+  {
+    "objectID": "posts/20230114-plot_pdf_cts_rv.html#solution",
+    "href": "posts/20230114-plot_pdf_cts_rv.html#solution",
+    "title": "Plot The Probability Density Function Of A Continuous Random Vaiable",
+    "section": "Solution",
+    "text": "Solution\nImport the dependencies.\n\nimport numpy as np\nfrom scipy import stats as st\nfrom seaborn import objects as so\n\nInitialise the random variable.\n\n\n\n\n\n\nNote\n\n\n\nWe use the normal distribution for this example, but it should work with any instance of rv_continuous.\n\n\n\nx = st.norm()\n\nInitialise xs, which represents the event space.\n\nxs = np.linspace(x.ppf(0.01), x.ppf(0.99), num=100)\n\nPlot the p.d.f.\n\n(\n    so.Plot(x=xs, y=x.pdf(xs))\n    .add(so.Line())\n    .label(x='X', y='f(x)', title='Probability distribution')\n)"
+  },
+  {
+    "objectID": "posts/20230114-plot_pmf_discrete_rv.html",
+    "href": "posts/20230114-plot_pmf_discrete_rv.html",
+    "title": "Plot The Probability Mass Function Of A Discrete Random Vaiable",
+    "section": "",
+    "text": "We have a discrete random variable whose p.m.f. we would like to visualise."
+  },
+  {
+    "objectID": "posts/20230114-plot_pmf_discrete_rv.html#solution",
+    "href": "posts/20230114-plot_pmf_discrete_rv.html#solution",
+    "title": "Plot The Probability Mass Function Of A Discrete Random Vaiable",
+    "section": "Solution",
+    "text": "Solution\nImport the dependencies.\n\nimport numpy as np\nfrom scipy import stats as st\nfrom seaborn import objects as so\n\nInitialise the random variable.\n\n\n\n\n\n\nNote\n\n\n\nWe use the Poisson distribution for this example, but it should work with any instance of rv_discrete.\n\n\n\nx = st.poisson(10)\n\nInitialise xs, which represents the event space.\n\nxs = np.arange(x.ppf(0.01), x.ppf(0.99)+1, dtype=int)\n\nPlot the p.m.f.\n\n\n\n\n\n\nNote\n\n\n\nWe use a lollipop chart in ths example, but you we could have used a simple bar chart.\n\n\n\n(\n    so.Plot(x=xs, y=x.pmf(xs))\n    .add(so.Bars(width=0.1))\n    .add(so.Dot(pointsize=8))\n    .label(x='X', y='p(x)', title='Probability distribution')\n)"
   }
 ]
