@@ -11,7 +11,91 @@
     "href": "index.html",
     "title": "LaughingRook",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Modified - Oldest\n        \n         \n          Modified - Newest\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nPlot The Probability Density Function Of A Continuous Random Vaiable\n\n\n\n\n\n\n\nProbability\n\n\nVisualisation\n\n\n \n\n\n\n\nJan 14, 2023\n\n\n1/14/23, 8:20:21 AM\n\n\n\n\n\n\n\n\nPlot The Probability Mass Function Of A Discrete Random Vaiable\n\n\n\n\n\n\n\nProbability\n\n\nVisualisation\n\n\n \n\n\n\n\nJan 14, 2023\n\n\n1/14/23, 8:17:52 AM\n\n\n\n\n\n\n\n\nModel A Continuous Random Variable\n\n\n\n\n\n\n\nM343\n\n\nProbability\n\n\n \n\n\n\n\nJan 13, 2023\n\n\n1/13/23, 6:27:28 PM\n\n\n\n\n\n\n\n\nModel A Discrete Random Variable\n\n\n\n\n\n\n\nM343\n\n\nProbability\n\n\n \n\n\n\n\nJan 12, 2023\n\n\n1/13/23, 6:27:31 PM\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Modified - Oldest\n        \n         \n          Modified - Newest\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nSliding Window\n\n\n\n\n\n\n\nIteration\n\n\nList\n\n\n \n\n\n\n\nJan 17, 2023\n\n\n1/17/23, 5:46:58 PM\n\n\n\n\n\n\n\n\nCan Goals Scored In The English Premier Be Modelled By A Poisson Process?\n\n\n\n\n\n\n\nProbability\n\n\nVisualisation\n\n\n \n\n\n\n\nJan 15, 2023\n\n\n1/17/23, 6:47:32 AM\n\n\n\n\n\n\n\n\nFilter A List\n\n\n\n\n\n\n\nIteration\n\n\nList\n\n\n \n\n\n\n\nJan 14, 2023\n\n\n1/14/23, 4:57:58 PM\n\n\n\n\n\n\n\n\nPlot The Probability Density Function Of A Continuous Random Vaiable\n\n\n\n\n\n\n\nProbability\n\n\nVisualisation\n\n\n \n\n\n\n\nJan 14, 2023\n\n\n1/15/23, 4:52:34 AM\n\n\n\n\n\n\n\n\nPlot The Probability Mass Function Of A Discrete Random Vaiable\n\n\n\n\n\n\n\nProbability\n\n\nVisualisation\n\n\n \n\n\n\n\nJan 14, 2023\n\n\n1/17/23, 5:53:58 PM\n\n\n\n\n\n\n\n\nModel A Continuous Random Variable\n\n\n\n\n\n\n\nM343\n\n\nProbability\n\n\n \n\n\n\n\nJan 13, 2023\n\n\n1/13/23, 6:27:28 PM\n\n\n\n\n\n\n\n\nModel A Discrete Random Variable\n\n\n\n\n\n\n\nM343\n\n\nProbability\n\n\n \n\n\n\n\nJan 12, 2023\n\n\n1/13/23, 6:27:31 PM\n\n\n\n\n\n\n\n\nCompound Poisson Processes\n\n\n\n\n\n\n\nProbability\n\n\nM343\n\n\nPoissonProcess\n\n\n \n\n\n\n\nNov 6, 2022\n\n\n1/17/23, 5:42:59 PM\n\n\n\n\n\n\n\n\nMultivariate Poisson Processes\n\n\n\n\n\n\n\nProbability\n\n\nM343\n\n\nPoissonProcess\n\n\n \n\n\n\n\nNov 6, 2022\n\n\n1/15/23, 7:18:27 AM\n\n\n\n\n\n\n\n\nNon-Homogeneous Poisson Processes\n\n\n\n\n\n\n\nProbability\n\n\nM343\n\n\nPoissonProcess\n\n\n \n\n\n\n\nNov 6, 2022\n\n\n1/15/23, 8:01:14 AM\n\n\n\n\n\n\n\n\nPoisson Processes\n\n\n\n\n\n\n\nProbability\n\n\nM343\n\n\nPoissonProcess\n\n\n \n\n\n\n\nNov 6, 2022\n\n\n1/17/23, 5:06:32 PM\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/20221106-compound_poisson_process.html",
+    "href": "posts/20221106-compound_poisson_process.html",
+    "title": "Compound Poisson Processes",
+    "section": "",
+    "text": "This notebook covers part of M343 Book 2, Part 2, which introduces the Poisson process as a means to model random events that occur in time.\nWe could not find a Python module that modelled the different type of Poisson processes covered in M343, so we wrote poissonprocesses, a Python processes that handles Poisson processes as summarised by M343.\nThis notebook covers a compund Poisson process, which is modelled by the CompoundEvents class."
+  },
+  {
+    "objectID": "posts/20221106-compound_poisson_process.html#compoundevents",
+    "href": "posts/20221106-compound_poisson_process.html#compoundevents",
+    "title": "Compound Poisson Processes",
+    "section": "CompoundEvents",
+    "text": "CompoundEvents\n\npoissonprocess.time.CompoundEvents\n\nA class to model a compound Poisson process.\n\nAttributes and properties\nindex_of_dispersion, float (Property)\noutcomes, st.rv_discrete: a model for the different outcomes that can occur.\nrate, float | int: the rate of occurrence of the event, \\(\\mu\\).\n\n\nMethods\ndescribe_outcomes() -> np.array\n\nReturn the mean and variance of the outcome of an event.\n\ndescribe_total_outcomes(t: float | int) -> np.array\n\nReturn the mean and variance of \\(S\\)(t), the total number of of outcomes in t units of time.\nPreconditions:\n\nt > 1\n\n\ntotal_mean(t: float | int) -> float\n\nReturn the expected value of \\(S\\)(t), the total number of of outcomes in t units of time.\nPreconditions:\n\nt > 1\n\n\ntotal_var(t: float | int) -> float\n\nReturn the variance of \\(S\\)(t), the total number of of outcomes in t units of time.\nPreconditions:\n\nt > 1"
+  },
+  {
+    "objectID": "posts/20221106-compound_poisson_process.html#examples",
+    "href": "posts/20221106-compound_poisson_process.html#examples",
+    "title": "Compound Poisson Processes",
+    "section": "Examples",
+    "text": "Examples\nImport the model.\n\nfrom scipy import stats as st\nfrom poissonprocesses.time import CompoundEvents\n\nLower the precision of the return floats.\n\n%precision 6\n\n'%.6f'\n\n\n\nItems purchased\nM343 Activity 7.1\n\n\n\n\n\n\nNote\n\n\n\nWe use a user-defined discrete random variable in this example.\n\n\nLet n items be a discrete random variable that models the number of items bought by a customer at a village shop.\n\nn_items = st.rv_discrete(values=((0, 1, 2, 3),\n                                 (0.2, 0.3, 0.4, 0.1)))\n\nInitialise leaving customers, the compound Poisson process that models customers leaving a shop and the number of items they have purchased.\n\nleaving_customers = CompoundEvents(n_items, 12)  # per hour\n\n\n\n\n\n\n\nTip\n\n\n\nWe can access the outcomes attributes to return the model for the outcomes of an individual event.\n\n\nReturn the mean and variance of the number of items bought by a customer leaving the shop.\n\n# mean, variance\nleaving_customers.describe_outcomes()\n\narray([1.4 , 0.84])\n\n\nReturn the mean and variance of the total number of items bought by customers over a nine hour period.\n\nleaving_customers.describe_total_outcomes(9)\n\narray([151.2, 302.4])\n\n\nReturn the index of dispersion.\n\nleaving_customers.index_of_dispersion\n\n2.000000\n\n\n\n\nUnscheduled maintenance\n(M343 Book 2, Exercise 7.2)\nLet n fixes be a Poisson random variate that models the number of minor incidences of damage on a hire car that require attention.\n\nn_fixes = st.poisson(0.8)\n\nLet car hires be a compound Poisson process that models the number of cars hired out by a company over a week and the number of minor incidences of damage each returning car has.\n\ncar_hires = CompoundEvents(n_fixes, 60)\n\nReturn the mean and variance of the number of fixes required by a car.\n\ncar_hires.describe_outcomes()\n\narray([0.8, 0.8])\n\n\nReturn the mean and variance of the number of unscheduled tasks required over a four-week period.\n\ncar_hires.describe_total_outcomes(9)\n\narray([432. , 777.6])\n\n\nReturn the index of dispersion.\n\ncar_hires.index_of_dispersion\n\n1.800000"
+  },
+  {
+    "objectID": "posts/20221106-multivariate_poisson_process.html",
+    "href": "posts/20221106-multivariate_poisson_process.html",
+    "title": "Multivariate Poisson Processes",
+    "section": "",
+    "text": "This notebook covers part of M343 Book 2, Part 2, which introduces the Poisson process as a means to model random events that occur in time.\nWe could not find a Python module that modelled the different type of Poisson processes covered in M343, so we wrote poissonprocesses, a Python processes that handles Poisson processes as summarised by M343.\nThis notebook covers a multivariates Poisson process, which is modelled by the MultivariateEvents class."
+  },
+  {
+    "objectID": "posts/20221106-multivariate_poisson_process.html#multivariateevents",
+    "href": "posts/20221106-multivariate_poisson_process.html#multivariateevents",
+    "title": "Multivariate Poisson Processes",
+    "section": "MultivariateEvents",
+    "text": "MultivariateEvents\n\npoissonprocess.time.MultivariateEvents\n\nA class to model a multivariate Poisson process.\n\nAttributes\nrates, dict[object, float | int]: a dictionary that maps \\(E\\), a particular kind of event, to its expected rate of occurrence, \\(\\mu_{E}\\).\n\n\nProperties\naggregated_rate, float | int: the sum of all the possible events being modelled.\nprops, dict[object, float]: a dictionary that maps \\(E\\), a particular kind of event, to its proportion of all events being modelled. Example, if 0.5 was returned for \\(E\\), then half of all events that occur are expected to be \\(E\\).\n\n\nClass methods\n\nfrom_props (props: dict, aggregated_rate: float | int) -> MultivariateEvents\n\nConvenience method to return an instance of MultivariateEvents using proportions rather than rates.\nPrecondtions:\n\nsum(values(props)) = 1\n0 < prop <= 1 for each prop in values(props)\naggregated_rate > 0\n\n\n\nMethods\n\ndescribe () -> pandas.DataFrame\n\nReturn a descriptive table, where each row shows a kind of event, the event’s rate of occurrence, and the proportion of all events that should be of this type.\n\nn (n_star: int, e: object) -> st.rv_discrete\n\nReturn a model for the number of events of the given kind e, given n_star events took place, \\(N_{e} \\sim B(n^{*}, p_{\\text{e}})\\).\nPreconditions:\n\ne in keys(self.rates)"
+  },
+  {
+    "objectID": "posts/20221106-multivariate_poisson_process.html#examples",
+    "href": "posts/20221106-multivariate_poisson_process.html#examples",
+    "title": "Multivariate Poisson Processes",
+    "section": "Examples",
+    "text": "Examples\nImport the model.\n\nfrom poissonprocesses.time import MultivariateEvents\n\nLower the precision of the return floats.\n\n%precision 6\n\n'%.6f'\n\n\n\nTelephone calls\n(M343 Book 2, Activity 5.2)\nLet phone calls, MultivariateEvents, be the multivariate Poisson process that models the arrival rate of the different kinds of phone call a tutor receives over the course of an evening.\n\nphone_calls = MultivariateEvents({'student': 2/3,  # per hour\n                                  'family': 1/3,\n                                  'friend': 1})\n\nOutput a descriptive table of the multivariate Poisson process.\n\nphone_calls.describe()\n\n\n\n\n\n  \n    \n      \n      rate\n      prop\n    \n    \n      kind\n      \n      \n    \n  \n  \n    \n      student\n      0.666667\n      0.333333\n    \n    \n      family\n      0.333333\n      0.166667\n    \n    \n      friend\n      1.000000\n      0.500000\n    \n  \n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nThe class implements the __getitem__ method, which allows us to index into an instance of the class to return models for a particular kind (or kinds) of event.\nThe returned value from indexing into the instance is an instance of Events.\n\n\nReturn the probability that the two students will call between 7pm and 7.45pm.\n\nphone_calls['student'].x(0.75).pmf(2)\n\n0.075816\n\n\n\n\n\n\n\n\nTip\n\n\n\nPassing : or ... as an index will return the aggregated model of all kinds of events.\n\n\nReturn the probability that between 7pm and 9pm tomorrow evening, the tutor’s telephone will not ring.\n\nphone_calls[:].x(2).pmf(0)\n\n0.018316\n\n\nReturn the probability that exactly two of the calls are from members of her family, given that the tutor receives four telephone calls one evening.\n\nphone_calls.n(4, 'family').pmf(2)\n\n0.115741\n\n\n\n\nPost office customers\n(M343 Book 2, Exercise 5.1)\nLet post office, MultivariateEvents, be the multivariate Poisson process that models the arrival of different kinds of customers at the post office over the course of an hour.\n\n\n\n\n\n\nNote\n\n\n\nWe are given the proportions of each kind of event and the global rate, so we use the from_props class method to initialise the instance of MultivariateEvents.\n\n\n\npost_office = MultivariateEvents.from_props(props={'letter': 0.7,\n                                                   'parcel': 0.05,\n                                                   'other': 0.25},\n                                            aggregated_rate=8)  # per hour\n\nOutput a descriptive table of the multivariate Poisson process.\n\npost_office.describe()\n\n\n\n\n\n  \n    \n      \n      rate\n      prop\n    \n    \n      kind\n      \n      \n    \n  \n  \n    \n      letter\n      5.6\n      0.70\n    \n    \n      parcel\n      0.4\n      0.05\n    \n    \n      other\n      2.0\n      0.25\n    \n  \n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nWe can index into the rates attribute and props property to return the expected rate and proprotion for a kind of event, respectively.\n\n\nReturn the rate and proportion of all events at which customers arrive at the post office to post parcels.\n\npost_office.rates['parcel'], post_office.props['parcel']\n\n(0.400000, 0.050000)\n\n\n\n\n\n\n\n\nTip\n\n\n\nIndex using a tuple to return a aggregated model for the kinds of events.\n\n\nReturn the probability that over a three-hour period, fewer than five customers arrive to post letters or parcels.\n\npost_office['letter', 'parcel'].x(3).cdf(4)\n\n0.000084\n\n\nReturn the median waiting time between customers arriving to post something (either a letter or a parcel).\n\npost_office['letter', 'parcel'].t.median()\n\n0.115525\n\n\nReturn the probability that the interval between successive customers arriving to post parcels is greater than an hour.\n\npost_office['parcel'].t.sf(1)\n\n0.670320"
+  },
+  {
+    "objectID": "posts/20221106-nonhomogeneous_poisson_process.html",
+    "href": "posts/20221106-nonhomogeneous_poisson_process.html",
+    "title": "Non-Homogeneous Poisson Processes",
+    "section": "",
+    "text": "This notebook covers part of M343 Book 2, Part 2, which introduces the Poisson process as a means to model random events that occur in time.\nWe could not find a Python module that modelled the different type of Poisson processes covered in M343, so we wrote poissonprocesses, a Python processes that handles Poisson processes as summarised by M343.\nThis notebook covers a non-homogeneous Poisson process, which is modelled by the NonHomogeneousEvents class."
+  },
+  {
+    "objectID": "posts/20221106-nonhomogeneous_poisson_process.html#nonhomogeneousevents",
+    "href": "posts/20221106-nonhomogeneous_poisson_process.html#nonhomogeneousevents",
+    "title": "Non-Homogeneous Poisson Processes",
+    "section": "NonHomogeneousEvents",
+    "text": "NonHomogeneousEvents\n\npoissonprocess.time.NonHomogeneousEvents\n\nA class to model a non-homogeneous Poisson process.\n\nAttributes\nrates, Callable: a function that the interval rate at time t.\n\n\nMethods\n\ninterval_rate(t1: float | int, t2: float | int) -> float\n\nReturn the interval rate in a bounded window of time, t1 \\(\\to\\) t2.\nPreconditions:\n\nt1 < t2\n\n\nx(t1: float | int, t2: float | int) -> st.rv_discrete\n\nReturn a model for the number of events that occur ina bounded window of time, \\(X(t_{1}, t_{2}) \\sim \\text{Poisson} (\\mu (t_{1}, t_{2}))\\).\nPreconditions:\n\nt1 < t2"
+  },
+  {
+    "objectID": "posts/20221106-nonhomogeneous_poisson_process.html#examples",
+    "href": "posts/20221106-nonhomogeneous_poisson_process.html#examples",
+    "title": "Non-Homogeneous Poisson Processes",
+    "section": "Examples",
+    "text": "Examples\nImport the model.\n\nfrom poissonprocesses.time import NonHomogenousEvents\n\nLower the precision of the return floats.\n\n%precision 6\n\n'%.6f'\n\n\n\nRat in a maze\n(M343 Book 2, Example 6.5)\nLet error rate, Callable, be a function that accepts the parameter t, float, and returns the expected rate of errors by a rat learning its way around a maze. A precondition is that t \\(\\ge\\) 0.\n\ndef error_rate(t):\n    import numpy as np\n    return 8 * np.exp(-t)\n\nLet rat maze, NonHomogenousEvents, be the non-homogenous Poisson process that models the occurrence of errors by a rat learning their way around a maze.\n\nrat_maze = NonHomogenousEvents(error_rate)  # per hour\n\nReturn the expected numbers of errors in the first hour, second hour, and third hour.\n\nts = [0, 1, 2, 3]\nfor t1, t2 in zip(ts[:-1], ts[1:]):\n    print(f'μ({t1}, {t2}) = {rat_maze.interval_rate(t1, t2): .4f}')\n\nμ(0, 1) =  5.0570\nμ(1, 2) =  1.8604\nμ(2, 3) =  0.6844\n\n\n\n\n\n\n\n\nNote\n\n\n\nWe use x again to return a model for the number of events in an interval of time, but note that it has a different signature to the Events and MultivariateEvents classes.\n\n\nReturn the probability that the rat makes more than two errors in the second hour.\n\nrat_maze.x(1, 2).sf(2)\n\n0.285589\n\n\n\n\nLearning to ride a bike\n(M343 Book 2, Activity 6.2)\n\n\n\n\n\n\nTip\n\n\n\nWe use a lambda function here to define the rate function.\n\n\nLet bike accidents, NonHomogenousEvents, be the non-homogenous Poisson process that models the occurrence of bike accidents per day by a child learning to ride their bike.\n\nbike_accidents = NonHomogenousEvents(lambda t: 24 / (2 + t))  # t >= 0\n\nReturn the expected number of accidents in the third week.\n\nbike_accidents.interval_rate(0, 7)\n\n36.097858\n\n\nReturn the probability that the girl has eight accidents in the third week.\n\nbike_accidents.x(14, 21).pmf(8)\n\n0.135497\n\n\nReturn the probability that the fourth week is free of accidents.\n\nbike_accidents.x(21, 28).pmf(0)\n\n0.001700"
+  },
+  {
+    "objectID": "posts/20221106-poisson_process.html",
+    "href": "posts/20221106-poisson_process.html",
+    "title": "Poisson Processes",
+    "section": "",
+    "text": "This notebook covers part of M343 Book 2, Part 2, which introduces the Poisson process as a means to model random events that occur in time.\nWe could not find a Python module that modelled the different type of Poisson processes covered in M343, so we wrote poissonprocesses, a Python processes that handles Poisson processes as summarised by M343.\nThis notebook covers a single Poisson process, which is modelled by the Events class."
+  },
+  {
+    "objectID": "posts/20221106-poisson_process.html#events",
+    "href": "posts/20221106-poisson_process.html#events",
+    "title": "Poisson Processes",
+    "section": "Events",
+    "text": "Events\n\npoissonprocess.time.Events\n\nA class to model a Poisson process.\n\nAttributes\nrate, float | int: the rate of occurrence of the event, \\(\\mu\\).\n\n\nProperties\nt, scipy.stats.rv_continuous: the model for the time between successive events, \\(T \\sim M(\\mu)\\).\n\n\nMethods\n\nx (t: float | int) -> scipy.stats.rv_discrete\n\nReturn the model for the number of events that occur in t units of time, \\(X(t) \\sim \\text{Poisson} (\\mu t)\\)."
+  },
+  {
+    "objectID": "posts/20221106-poisson_process.html#example",
+    "href": "posts/20221106-poisson_process.html#example",
+    "title": "Poisson Processes",
+    "section": "Example",
+    "text": "Example\n(M343 Book 2, Activity 3.2)\nImport the model.\n\nfrom poissonprocesses.time import Events\n\nLower the precision of the return floats.\n\n%precision 6\n\n'%.6f'\n\n\nLet earthquakes, Events, be the Poisson process that models the incidences of major earthquakes worldwide.\n\nearthquakes = Events(12/14)  # per year\n\n\n\n\n\n\n\nTip\n\n\n\nBoth method x and property t return SciPy random variables, so the usual methods can be called on the returned object.\n\n\nReturn the probability that there will be at least three major earthquakes in a period of ten years.\n\nearthquakes.x(10).sf(2)\n\n0.991228\n\n\nReturn the probability that the waiting time between successive major earthquakes exceeds two years.\n\nearthquakes.t.sf(2)\n\n0.180092\n\n\nReturn the median time between successive major earthquakes.\n\nearthquakes.t.median()\n\n0.808672"
   },
   {
     "objectID": "posts/20230112-modelling_discrete_rvs.html",
@@ -56,6 +140,27 @@
     "text": "Example\nLet \\(T\\) be a continuous rv that has p.d.f.,\n\\[\nf(t) = \\frac{t}{48}, \\enspace 2 \\le t \\le 10.\n\\]\nImport the dependencies.\n\nfrom scipy import stats as st\n\nDeclare a new subclass of rv_continuous, and override the _pdf method.\n\n\n\n\n\n\nNote\n\n\n\nWe override the constructor here because \\(T\\) is bounded.\nIf it was unbounded, then we do not need to override the constructor.\n\n\n\nclass t_gen(st.rv_continuous):\n    def __init__(self):\n        super().__init__(a=2, b=10)\n\n    def _pdf(self, t):\n        return t / 48\n\nInitialise t, an instance t_gen.\n\nt = t_gen()"
   },
   {
+    "objectID": "posts/20230114-filter_list.html",
+    "href": "posts/20230114-filter_list.html",
+    "title": "Filter A List",
+    "section": "",
+    "text": "We have a some sequence that we would like to filter on some predicate."
+  },
+  {
+    "objectID": "posts/20230114-filter_list.html#solution",
+    "href": "posts/20230114-filter_list.html#solution",
+    "title": "Filter A List",
+    "section": "Solution",
+    "text": "Solution\nWe have a number of different options:\n\nUse the filter function,\nUse the pipe module."
+  },
+  {
+    "objectID": "posts/20230114-filter_list.html#example",
+    "href": "posts/20230114-filter_list.html#example",
+    "title": "Filter A List",
+    "section": "Example",
+    "text": "Example\nWe would like to select all even numbers from a list of ints.\nLet nums be an interator that when iterated over, returns\n\nnums = range(1, 11)\n\n\nUse filter()\nReturn the even numbers in nums.\n\ndef is_even(x): return x % 2 == 0\n\n\nlist(filter(is_even, nums))\n\n[2, 4, 6, 8, 10]\n\n\n\n\nUse pipe\nWe can use either filter or where in the pipe module.\nImport the dependencies.\n\nimport pipe  # noqa\n\nSelect odd numbers from nums.\n\nis_odd = pipe.where(lambda x: x % 2 != 0)\nlist(nums | is_odd)\n\n[1, 3, 5, 7, 9]\n\n\nSelect numbers that are divisible by 3 from nums.\n\nis_div_3 = pipe.filter(lambda x: x % 3 == 0)\nlist(nums | is_div_3)\n\n[3, 6, 9]"
+  },
+  {
     "objectID": "posts/20230114-plot_pdf_cts_rv.html",
     "href": "posts/20230114-plot_pdf_cts_rv.html",
     "title": "Plot The Probability Density Function Of A Continuous Random Vaiable",
@@ -67,7 +172,7 @@
     "href": "posts/20230114-plot_pdf_cts_rv.html#solution",
     "title": "Plot The Probability Density Function Of A Continuous Random Vaiable",
     "section": "Solution",
-    "text": "Solution\nWe can use the fuction below to produce a line chart of the p.d.f.\n\n\n\n\n\n\nWarning\n\n\n\nThis requires seaborn >= 0.12.\n\n\n\nplot_pdf(rv: rv_continuous) -> so.Plot\n\n\nimport numpy as np\nfrom scipy import stats as st\nfrom seaborn import objects as so\n\n\ndef plot_pdf(rv) -> so.Plot:\n    \"\"\"Plot the approximate probability distribution of T, the waiting\n    time between events.\n    \"\"\"\n    xs = np.linspace(rv.ppf(0.005), rv.ppf(0.995), num=100)\n    return(\n        so.Plot(x=xs, y=rv.pdf(xs))\n        .add(so.Line())\n        .label(x='x', y='f(x)', title='Probability distribution')\n    )"
+    "text": "Solution\nWe can use the fuction below to produce a line chart of the p.d.f.\n\n\n\n\n\n\nWarning\n\n\n\nThis requires seaborn >= 0.12.\n\n\n\nplot_pdf(rv: rv_continuous) -> so.Plot\n\n\nimport numpy as np\nfrom scipy import stats as st\nfrom seaborn import objects as so\n\n\ndef plot_pdf(rv) -> so.Plot:\n    \"\"\"Plot the pmf of the given continuous rv as a bar chart.\n    \"\"\"\n    xs = np.linspace(rv.ppf(0.005), rv.ppf(0.995), num=100)\n    return(\n        so.Plot(x=xs, y=rv.pdf(xs))\n        .add(so.Line())\n        .label(x='x', y='f(x)', title='Probability distribution')\n    )"
   },
   {
     "objectID": "posts/20230114-plot_pdf_cts_rv.html#examples",
@@ -88,13 +193,76 @@
     "href": "posts/20230114-plot_pmf_discrete_rv.html#solution",
     "title": "Plot The Probability Mass Function Of A Discrete Random Vaiable",
     "section": "Solution",
-    "text": "Solution\nWe can use the fuction below to produce a bar chart of the p.m.f.\n\n\n\n\n\n\nWarning\n\n\n\nThis requires seaborn >= 0.12.\n\n\n\nplot_pmf(rv: rv_discrete, step: int = 1) -> Plot\n\n\nimport numpy as np\nfrom scipy import stats as st\nfrom seaborn import objects as so\n\n\ndef plot_pmf(rv, step=1):\n    \"\"\"Plot the pmf of the given rv as a bar chart.\n\n    Pass step to reduce the number of x-axis tick labels.\n    This is useful if the x-axis appears particularly cluttered.\n    \"\"\"\n    xs = np.arange(rv.ppf(0.005), rv.ppf(0.995)+1, dtype=int)\n    return (\n        so.Plot(x=xs, y=rv.pmf(xs))\n        .add(so.Bar())\n        .scale(x=so.Continuous().tick(every=step))\n        .label(x='x', y='p(x)', title='Probability distribution')\n    )"
+    "text": "Solution\nWe can use the fuction below to produce a bar chart of the p.m.f.\n\n\n\n\n\n\nWarning\n\n\n\nThis requires seaborn >= 0.12.\n\n\nplot_pmf(rv: rv_discrete, step: int = 1) -> Plot\n\ndef plot_pmf(rv, step=1):\n    \"\"\"Plot the pmf of the given discrete rv as a bar chart.\n\n    Pass step to reduce the number of x-axis tick labels.\n    This is useful if the x-axis appears particularly cluttered.\n    \"\"\"\n    import numpy as np\n    from seaborn import objects as so\n\n    xs = np.arange(rv.ppf(0.005), rv.ppf(0.995)+1, dtype=int)\n    return (\n        so.Plot(x=xs, y=rv.pmf(xs))\n        .add(so.Bar())\n        .scale(x=so.Continuous().tick(every=step))\n        .label(x='x', y='p(x)', title='Probability distribution')\n    )"
   },
   {
     "objectID": "posts/20230114-plot_pmf_discrete_rv.html#examples",
     "href": "posts/20230114-plot_pmf_discrete_rv.html#examples",
     "title": "Plot The Probability Mass Function Of A Discrete Random Vaiable",
     "section": "Examples",
-    "text": "Examples\nUsing the default step.\n\nplot_pmf(st.poisson(10))\n\n\n\n\nUsing a custom step.\n\nplot_pmf(st.geom(0.1), step=5)"
+    "text": "Examples\nImport the dependencies for the examples.\n\nfrom scipy.stats import poisson, geom  # noqa\n\n\n\n\n\n\n\nNote\n\n\n\nUsing the default step.\n\n\n\nplot_pmf(poisson(10))\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nPassing an argument for step.\n\n\n\nplot_pmf(geom(0.1), step=5)"
+  },
+  {
+    "objectID": "posts/20230115-epl_goals_poisson_process.html",
+    "href": "posts/20230115-epl_goals_poisson_process.html",
+    "title": "Can Goals Scored In The English Premier Be Modelled By A Poisson Process?",
+    "section": "",
+    "text": "Warning\n\n\n\nWork in progress"
+  },
+  {
+    "objectID": "posts/20230115-epl_goals_poisson_process.html#dependencies",
+    "href": "posts/20230115-epl_goals_poisson_process.html#dependencies",
+    "title": "Can Goals Scored In The English Premier Be Modelled By A Poisson Process?",
+    "section": "Dependencies",
+    "text": "Dependencies\nWe load the dependencies first so they are accessible throughout the entire notebook.\n\nimport pandas as pd\nfrom scipy import stats as st\nimport seaborn as sns\nfrom seaborn import objects as so"
+  },
+  {
+    "objectID": "posts/20230115-epl_goals_poisson_process.html#summary",
+    "href": "posts/20230115-epl_goals_poisson_process.html#summary",
+    "title": "Can Goals Scored In The English Premier Be Modelled By A Poisson Process?",
+    "section": "Summary",
+    "text": "Summary"
+  },
+  {
+    "objectID": "posts/20230115-epl_goals_poisson_process.html#introduction",
+    "href": "posts/20230115-epl_goals_poisson_process.html#introduction",
+    "title": "Can Goals Scored In The English Premier Be Modelled By A Poisson Process?",
+    "section": "Introduction",
+    "text": "Introduction"
+  },
+  {
+    "objectID": "posts/20230115-epl_goals_poisson_process.html#data-pipeline",
+    "href": "posts/20230115-epl_goals_poisson_process.html#data-pipeline",
+    "title": "Can Goals Scored In The English Premier Be Modelled By A Poisson Process?",
+    "section": "Data Pipeline",
+    "text": "Data Pipeline\nCache and load the CSV file into a pandas DataFrame.\n\nurl = 'https://raw.githubusercontent.com/ljk233/laughingrook-datasets/main/epl_goals/epl_1819.csv'  # noqa\nepl_goals_df = pd.read_csv(url, usecols=[14, 18, 19])\nepl_goals_df.info()\n\n<class 'pandas.core.frame.DataFrame'>\nRangeIndex: 380 entries, 0 to 379\nData columns (total 3 columns):\n #   Column                  Non-Null Count  Dtype \n---  ------                  --------------  ----- \n 0   total_goal_count        380 non-null    int64 \n 1   home_team_goal_timings  292 non-null    object\n 2   away_team_goal_timings  261 non-null    object\ndtypes: int64(1), object(2)\nmemory usage: 9.0+ KB\n\n\n\nepl_goals_df.head()\n\n\n\n\n\n  \n    \n      \n      total_goal_count\n      home_team_goal_timings\n      away_team_goal_timings\n    \n  \n  \n    \n      0\n      3\n      3,83\n      90'2\n    \n    \n      1\n      3\n      11\n      8,18\n    \n    \n      2\n      2\n      24,90'1\n      NaN\n    \n    \n      3\n      2\n      NaN\n      41,79\n    \n    \n      4\n      3\n      NaN\n      34,45,80\n    \n  \n\n\n\n\n\nClean the goal timings\nEach line represents the results of a single game, with the goal times stored as a comma-separated str. However, there are a number of issues with this, which this pipeline will fix.\n\nLines #3 to #6 unpivots the data\n\nThe goal timings are stored in two columns, but ultimately they will be subjected to the same transformation\nBy unpivoting the data, we only need to transform a single column\n\nLine #7 resets the index and stores it in a column called game_id\n\nThere is a natural ordering to the data, which cannot be inferred once we start transforming it\nBy preserving the index, we can the infer this natural ordering later on\n\nLines #8 to #11 processes the goal timings column\n\nLine #8 splits the goal timings value, so each row is cast to a list\nLine #9 explodes the goal timings, so rather than each row holding data on multiple goals, now each row represents the time of an individual goal (as a str)\nLines #10 to #11 then casts the goal timings to an int, with a side-effect being that we drop any goals scored in injury time\n\nLines #12 to #16 then finish the transformation\n\nLine #12 sorts the date by game id > game time\nLine #13 resets the index\nLine #14 resets the index, and renames it to goal_id\nLine #15 renames columns to something more sensible\nLine #16 drops columns that are not needed in the future\n\n\nThis will be stored in a new view called goal_timings_df.\n\ngoal_timings_df = (\n    epl_goals_df\n    .melt(value_vars=['home_team_goal_timings',\n                      'away_team_goal_timings'],\n          ignore_index=False,)\n    .dropna()\n    .reset_index().rename(columns={'index': 'game_id'})\n    .assign(value=lambda x: x['value'].str.split(','))\n    .explode(column='value', ignore_index=False)\n    .assign(value=lambda x: pd.to_numeric(x['value'], errors='coerce'))\n    .dropna().assign(value=lambda x: x['value'].astype(int))\n    .sort_values(by=['game_id', 'value'])\n    .reset_index(drop=True)\n    .rename_axis('goal_id').reset_index()\n    .rename(columns={'value': 'game_min'})\n    .drop(columns=['variable'])\n)\ngoal_timings_df.info()\n\n<class 'pandas.core.frame.DataFrame'>\nRangeIndex: 978 entries, 0 to 977\nData columns (total 3 columns):\n #   Column    Non-Null Count  Dtype\n---  ------    --------------  -----\n 0   goal_id   978 non-null    int64\n 1   game_id   978 non-null    int64\n 2   game_min  978 non-null    int32\ndtypes: int32(1), int64(2)\nmemory usage: 19.2 KB\n\n\n\ngoal_timings_df.head()\n\n\n\n\n\n  \n    \n      \n      goal_id\n      game_id\n      game_min\n    \n  \n  \n    \n      0\n      0\n      0\n      3\n    \n    \n      1\n      1\n      0\n      83\n    \n    \n      2\n      2\n      1\n      8\n    \n    \n      3\n      3\n      1\n      11\n    \n    \n      4\n      4\n      1\n      18\n    \n  \n\n\n\n\n\n\nSeason goal timings\nWe will model the EPL season as if no games were played at the same time, instead as if they were played consecutively. We do this by shifting each game_min by 90 \\(\\times\\) goal_id. This representation is then stored in season_min.\nWe will hold this data in a new view called season_goal_timing_df.\n\nseason_goal_timings_df = (\n    goal_timings_df\n    .assign(start_min=lambda x: x['game_id'] * 90,\n            season_min=lambda x: x['start_min'] + x['game_min'])\n    .drop(columns=['game_min', 'start_min'])\n)\nseason_goal_timings_df.head()\n\n\n\n\n\n  \n    \n      \n      goal_id\n      game_id\n      season_min\n    \n  \n  \n    \n      0\n      0\n      0\n      3\n    \n    \n      1\n      1\n      0\n      83\n    \n    \n      2\n      2\n      1\n      98\n    \n    \n      3\n      3\n      1\n      101\n    \n    \n      4\n      4\n      1\n      108\n    \n  \n\n\n\n\n\n\nWaiting time between goals\nThe calculate the time between each concecutive goals, and store this in a DataFrame called waiting_time_between_goals_df.\n\nwaiting_time_between_goals_df = (\n    season_goal_timings_df\n    .assign(waiting_time=lambda x: x['season_min'].diff())\n    .dropna()\n    .assign(waiting_time=lambda x: x['waiting_time'].astype('int'))\n    .drop(columns='season_min')\n)\nwaiting_time_between_goals_df.head()\n\n\n\n\n\n  \n    \n      \n      goal_id\n      game_id\n      waiting_time\n    \n  \n  \n    \n      1\n      1\n      0\n      80\n    \n    \n      2\n      2\n      1\n      15\n    \n    \n      3\n      3\n      1\n      3\n    \n    \n      4\n      4\n      1\n      7\n    \n    \n      5\n      5\n      2\n      96"
+  },
+  {
+    "objectID": "posts/20230115-epl_goals_poisson_process.html#analysis",
+    "href": "posts/20230115-epl_goals_poisson_process.html#analysis",
+    "title": "Can Goals Scored In The English Premier Be Modelled By A Poisson Process?",
+    "section": "Analysis",
+    "text": "Analysis\n\nNumber of goals per game\nIf goal scoring can be modelled by a Poisson process, then we would expect the number of goals per game to be distributed by a Poisson distribution with parameter \\(\\Bbb {E} (\\text{number of goals per game})\\).\nThere were on average approximately 2.8 goals per game, with variance approximately 2.5642. These are quite close, so there is evidence that the number of goals per game maybe modelled by a Poisson distribution with parameter approximately 2.8.\n\n(epl_goals_df['total_goal_count'].mean(),\n epl_goals_df['total_goal_count'].var())\n\n(2.8210526315789473, 2.5641994167476736)\n\n\nThe plot below shows the observed frequency of each goal count, and the expected frquency if the number of goals per game could be modelled by a Poisson distribution.\n\nn_games = epl_goals_df.shape[0]\ngoal_rate = epl_goals_df[['total_goal_count']].mean()\nnum_goals_model = st.poisson(goal_rate)\nnum_goals_per_game_df = (\n    epl_goals_df['total_goal_count']\n    .value_counts().rename_axis('num_goals').rename('observed')\n    .reset_index()\n    .assign(expected=lambda x: num_goals_model.pmf(x['num_goals']) * n_games)\n    .sort_values(by='num_goals')\n)\n(\n    so.Plot(data=num_goals_per_game_df.melt(id_vars='num_goals'),\n            x='num_goals',\n            y='value',\n            color='variable')\n    .add(so.Bar(), so.Dodge())\n    .label(x='Number of goals',\n           y='Frequency')\n)"
+  },
+  {
+    "objectID": "posts/20230117-sliding_window.html",
+    "href": "posts/20230117-sliding_window.html",
+    "title": "Sliding Window",
+    "section": "",
+    "text": "We have some sequence, and we would like to iterate over it using a sliding window.\n\n\n\n\n\n\nNote\n\n\n\nThis is sometimes also called a rolling window."
+  },
+  {
+    "objectID": "posts/20230117-sliding_window.html#solution",
+    "href": "posts/20230117-sliding_window.html#solution",
+    "title": "Sliding Window",
+    "section": "Solution",
+    "text": "Solution\nWe have a number of different options:\n\nUsing a generator\nUsing NumPy’s sliding_window_view\nUsing Panda’s rolling method"
+  },
+  {
+    "objectID": "posts/20230117-sliding_window.html#example",
+    "href": "posts/20230117-sliding_window.html#example",
+    "title": "Sliding Window",
+    "section": "Example",
+    "text": "Example\nWe have the sequence of numbers 1:5, and we’d like to iterate over a sliding window of size 2 and return the sum of the window.\n\nnums = [*range(1, 6)]\n\n\nUsing a generator\n\nsliding_window(seq: Iterable, size: int, start: int = 0)\n\n\ndef sliding_window_gen(seq, size, start=0):\n    from itertools import islice\n    for i in range(start, len(seq)-size+1):\n        yield tuple(islice(seq[i:], size))\n\n\nslider = sliding_window_gen(nums, 2)\n[sum(window) for window in slider]\n\n[3, 5, 7, 9]\n\n\n\n\nUsing NumPy\nWe use sliding_window_view in numpy.lib.stride_tricks.\n\nfrom numpy.lib.stride_tricks import sliding_window_view  # noqa\nsliding_window_view(nums, 2).sum(axis=1)\n\narray([3, 5, 7, 9])\n\n\n\n\nUsing Pandas\nWe use the rolling method of a pandas.series.\n\nfrom pandas import Series  # noqa\nnum_ser = Series(nums)\nnum_ser.rolling(2).sum()\n\n0    NaN\n1    3.0\n2    5.0\n3    7.0\n4    9.0\ndtype: float64"
   }
 ]

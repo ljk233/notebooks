@@ -2,10 +2,17 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/20230117-sliding_window.html",
+      "/posts/20230115-epl_goals_poisson_process.html",
+      "/posts/20230114-filter_list.html",
       "/posts/20230114-plot_pdf_cts_rv.html",
       "/posts/20230114-plot_pmf_discrete_rv.html",
       "/posts/20230113-modelling_cts_rvs.html",
-      "/posts/20230112-modelling_discrete_rvs.html"
+      "/posts/20230112-modelling_discrete_rvs.html",
+      "/posts/20221106-compound_poisson_process.html",
+      "/posts/20221106-multivariate_poisson_process.html",
+      "/posts/20221106-nonhomogeneous_poisson_process.html",
+      "/posts/20221106-poisson_process.html"
     ]
   }
 ]

@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Liam Kelly">
-<meta name="dcterms.date" content="2023-01-14">
+<meta name="dcterms.date" content="2023-01-17">
 
-<title>LaughingRook - Plot The Probability Density Function Of A Continuous Random Vaiable</title>
+<title>LaughingRook - Sliding Window</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -171,7 +171,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul>
   <li><a href="#problem" id="toc-problem" class="nav-link active" data-scroll-target="#problem">Problem</a></li>
   <li><a href="#solution" id="toc-solution" class="nav-link" data-scroll-target="#solution">Solution</a></li>
-  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a>
+  <ul class="collapse">
+  <li><a href="#using-a-generator" id="toc-using-a-generator" class="nav-link" data-scroll-target="#using-a-generator">Using a generator</a></li>
+  <li><a href="#using-numpy" id="toc-using-numpy" class="nav-link" data-scroll-target="#using-numpy">Using NumPy</a></li>
+  <li><a href="#using-pandas" id="toc-using-pandas" class="nav-link" data-scroll-target="#using-pandas">Using Pandas</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -180,10 +185,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Plot The Probability Density Function Of A Continuous Random Vaiable</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Sliding Window</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
   <div class="quarto-categories">
-    <div class="quarto-category">Probability</div>
-    <div class="quarto-category">Visualisation</div>
+    <div class="quarto-category">Iteration</div>
+    <div class="quarto-category">List</div>
   </div>
   </div>
 
@@ -201,7 +206,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 14, 2023</p>
+      <p class="date">January 17, 2023</p>
     </div>
   </div>
   
@@ -213,62 +218,87 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <section id="problem" class="level2">
 <h2 class="anchored" data-anchor-id="problem">Problem</h2>
-<p>We have a continuous random variable whose p.d.f. we would like to visualise.</p>
-</section>
-<section id="solution" class="level2">
-<h2 class="anchored" data-anchor-id="solution">Solution</h2>
-<p>We can use the fuction below to produce a line chart of the p.d.f.</p>
-<div class="callout-warning callout callout-style-default callout-captioned">
+<p>We have some sequence, and we would like to iterate over it using a <strong>sliding window</strong>.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Warning
+Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This requires <code>seaborn &gt;= 0.12</code>.</p>
+<p>This is sometimes also called a <em>rolling window</em>.</p>
 </div>
-</div>
-<blockquote class="blockquote">
-<p><code>plot_pdf(rv: rv_continuous) -&gt; so.Plot</code></p>
-</blockquote>
-<div class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="im">from</span> scipy <span class="im">import</span> stats <span class="im">as</span> st</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="im">from</span> seaborn <span class="im">import</span> objects <span class="im">as</span> so</span>
-<span id="cb1-4"><a href="#cb1-4"></a></span>
-<span id="cb1-5"><a href="#cb1-5"></a></span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="kw">def</span> plot_pdf(rv) <span class="op">-&gt;</span> so.Plot:</span>
-<span id="cb1-7"><a href="#cb1-7"></a>    <span class="co">"""Plot the pmf of the given continuous rv as a bar chart.</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a><span class="co">    """</span></span>
-<span id="cb1-9"><a href="#cb1-9"></a>    xs <span class="op">=</span> np.linspace(rv.ppf(<span class="fl">0.005</span>), rv.ppf(<span class="fl">0.995</span>), num<span class="op">=</span><span class="dv">100</span>)</span>
-<span id="cb1-10"><a href="#cb1-10"></a>    <span class="cf">return</span>(</span>
-<span id="cb1-11"><a href="#cb1-11"></a>        so.Plot(x<span class="op">=</span>xs, y<span class="op">=</span>rv.pdf(xs))</span>
-<span id="cb1-12"><a href="#cb1-12"></a>        .add(so.Line())</span>
-<span id="cb1-13"><a href="#cb1-13"></a>        .label(x<span class="op">=</span><span class="st">'x'</span>, y<span class="op">=</span><span class="st">'f(x)'</span>, title<span class="op">=</span><span class="st">'Probability distribution'</span>)</span>
-<span id="cb1-14"><a href="#cb1-14"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="examples" class="level2">
-<h2 class="anchored" data-anchor-id="examples">Examples</h2>
-<div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>plot_pdf(st.norm())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="2">
-<p><img src="20230114-plot_pdf_cts_rv_files/figure-html/cell-3-output-1.png" width="599" height="445"></p>
+<section id="solution" class="level2">
+<h2 class="anchored" data-anchor-id="solution">Solution</h2>
+<p>We have a number of different options:</p>
+<ol type="1">
+<li>Using a <code>generator</code></li>
+<li>Using <em>NumPy’s</em> <code>sliding_window_view</code></li>
+<li>Using <em>Panda’s</em> <code>rolling</code> method</li>
+</ol>
+</section>
+<section id="example" class="level2">
+<h2 class="anchored" data-anchor-id="example">Example</h2>
+<p>We have the sequence of numbers 1:5, and we’d like to iterate over a sliding window of size 2 and return the sum of the window.</p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>nums <span class="op">=</span> [<span class="op">*</span><span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">6</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<section id="using-a-generator" class="level3">
+<h3 class="anchored" data-anchor-id="using-a-generator">Using a generator</h3>
+<blockquote class="blockquote">
+<p><code>sliding_window(seq: Iterable, size: int, start: int = 0)</code></p>
+</blockquote>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">def</span> sliding_window_gen(seq, size, start<span class="op">=</span><span class="dv">0</span>):</span>
+<span id="cb2-2"><a href="#cb2-2"></a>    <span class="im">from</span> itertools <span class="im">import</span> islice</span>
+<span id="cb2-3"><a href="#cb2-3"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(start, <span class="bu">len</span>(seq)<span class="op">-</span>size<span class="op">+</span><span class="dv">1</span>):</span>
+<span id="cb2-4"><a href="#cb2-4"></a>        <span class="cf">yield</span> <span class="bu">tuple</span>(islice(seq[i:], size))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>plot_pdf(st.gamma(<span class="dv">2</span>, <span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>slider <span class="op">=</span> sliding_window_gen(nums, <span class="dv">2</span>)</span>
+<span id="cb3-2"><a href="#cb3-2"></a>[<span class="bu">sum</span>(window) <span class="cf">for</span> window <span class="kw">in</span> slider]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
-<p><img src="20230114-plot_pdf_cts_rv_files/figure-html/cell-4-output-1.png" width="599" height="445"></p>
+<pre><code>[3, 5, 7, 9]</code></pre>
+</div>
+</div>
+</section>
+<section id="using-numpy" class="level3">
+<h3 class="anchored" data-anchor-id="using-numpy">Using NumPy</h3>
+<p>We use <code>sliding_window_view</code> in <em>numpy.lib.stride_tricks</em>.</p>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">from</span> numpy.lib.stride_tricks <span class="im">import</span> sliding_window_view  <span class="co"># noqa</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>sliding_window_view(nums, <span class="dv">2</span>).<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>array([3, 5, 7, 9])</code></pre>
+</div>
+</div>
+</section>
+<section id="using-pandas" class="level3">
+<h3 class="anchored" data-anchor-id="using-pandas">Using Pandas</h3>
+<p>We use the <code>rolling</code> method of a <em>pandas.series</em>.</p>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="im">from</span> pandas <span class="im">import</span> Series  <span class="co"># noqa</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>num_ser <span class="op">=</span> Series(nums)</span>
+<span id="cb7-3"><a href="#cb7-3"></a>num_ser.rolling(<span class="dv">2</span>).<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>0    NaN
+1    3.0
+2    5.0
+3    7.0
+4    9.0
+dtype: float64</code></pre>
 </div>
 </div>
 
 
 <!-- -->
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -456,65 +486,83 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb4" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">---</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="an">title:</span><span class="co"> Plot The Probability Density Function Of A Continuous Random Vaiable</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="an">date:</span><span class="co"> '2023-01-14'</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="an">categories:</span></span>
-<span id="cb4-5"><a href="#cb4-5"></a><span class="co">  - Probability</span></span>
-<span id="cb4-6"><a href="#cb4-6"></a><span class="co">  - Visualisation</span></span>
-<span id="cb4-7"><a href="#cb4-7"></a><span class="an">jupyter:</span></span>
-<span id="cb4-8"><a href="#cb4-8"></a><span class="co">  jupytext:</span></span>
-<span id="cb4-9"><a href="#cb4-9"></a><span class="co">    text_representation:</span></span>
-<span id="cb4-10"><a href="#cb4-10"></a><span class="co">      extension: .qmd</span></span>
-<span id="cb4-11"><a href="#cb4-11"></a><span class="co">      format_name: quarto</span></span>
-<span id="cb4-12"><a href="#cb4-12"></a><span class="co">      format_version: '1.0'</span></span>
-<span id="cb4-13"><a href="#cb4-13"></a><span class="co">      jupytext_version: 1.14.4</span></span>
-<span id="cb4-14"><a href="#cb4-14"></a><span class="co">  kernelspec:</span></span>
-<span id="cb4-15"><a href="#cb4-15"></a><span class="co">    display_name: lr_datavis</span></span>
-<span id="cb4-16"><a href="#cb4-16"></a><span class="co">    language: python</span></span>
-<span id="cb4-17"><a href="#cb4-17"></a><span class="co">    name: lr_datavis</span></span>
-<span id="cb4-18"><a href="#cb4-18"></a><span class="co">---</span></span>
-<span id="cb4-19"><a href="#cb4-19"></a></span>
-<span id="cb4-20"><a href="#cb4-20"></a><span class="fu">## Problem</span></span>
-<span id="cb4-21"><a href="#cb4-21"></a></span>
-<span id="cb4-22"><a href="#cb4-22"></a>We have a continuous random variable whose p.d.f. we would like to visualise.</span>
-<span id="cb4-23"><a href="#cb4-23"></a></span>
-<span id="cb4-24"><a href="#cb4-24"></a><span class="fu">## Solution</span></span>
-<span id="cb4-25"><a href="#cb4-25"></a></span>
-<span id="cb4-26"><a href="#cb4-26"></a>We can use the fuction below to produce a line chart of the p.d.f.</span>
-<span id="cb4-27"><a href="#cb4-27"></a></span>
-<span id="cb4-28"><a href="#cb4-28"></a>:::{.callout-warning}</span>
-<span id="cb4-29"><a href="#cb4-29"></a>This requires <span class="in">`seaborn &gt;= 0.12`</span>.</span>
-<span id="cb4-30"><a href="#cb4-30"></a>:::</span>
-<span id="cb4-31"><a href="#cb4-31"></a></span>
-<span id="cb4-32"><a href="#cb4-32"></a><span class="at">&gt; </span><span class="in">`plot_pdf(rv: rv_continuous) -&gt; so.Plot`</span></span>
-<span id="cb4-33"><a href="#cb4-33"></a></span>
-<span id="cb4-36"><a href="#cb4-36"></a><span class="in">```{python}</span></span>
-<span id="cb4-37"><a href="#cb4-37"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb4-38"><a href="#cb4-38"></a><span class="im">from</span> scipy <span class="im">import</span> stats <span class="im">as</span> st</span>
-<span id="cb4-39"><a href="#cb4-39"></a><span class="im">from</span> seaborn <span class="im">import</span> objects <span class="im">as</span> so</span>
-<span id="cb4-40"><a href="#cb4-40"></a></span>
-<span id="cb4-41"><a href="#cb4-41"></a></span>
-<span id="cb4-42"><a href="#cb4-42"></a><span class="kw">def</span> plot_pdf(rv) <span class="op">-&gt;</span> so.Plot:</span>
-<span id="cb4-43"><a href="#cb4-43"></a>    <span class="co">"""Plot the pmf of the given continuous rv as a bar chart.</span></span>
-<span id="cb4-44"><a href="#cb4-44"></a><span class="co">    """</span></span>
-<span id="cb4-45"><a href="#cb4-45"></a>    xs <span class="op">=</span> np.linspace(rv.ppf(<span class="fl">0.005</span>), rv.ppf(<span class="fl">0.995</span>), num<span class="op">=</span><span class="dv">100</span>)</span>
-<span id="cb4-46"><a href="#cb4-46"></a>    <span class="cf">return</span>(</span>
-<span id="cb4-47"><a href="#cb4-47"></a>        so.Plot(x<span class="op">=</span>xs, y<span class="op">=</span>rv.pdf(xs))</span>
-<span id="cb4-48"><a href="#cb4-48"></a>        .add(so.Line())</span>
-<span id="cb4-49"><a href="#cb4-49"></a>        .label(x<span class="op">=</span><span class="st">'x'</span>, y<span class="op">=</span><span class="st">'f(x)'</span>, title<span class="op">=</span><span class="st">'Probability distribution'</span>)</span>
-<span id="cb4-50"><a href="#cb4-50"></a>    )</span>
-<span id="cb4-51"><a href="#cb4-51"></a><span class="in">```</span></span>
-<span id="cb4-52"><a href="#cb4-52"></a></span>
-<span id="cb4-53"><a href="#cb4-53"></a><span class="fu">## Examples</span></span>
-<span id="cb4-54"><a href="#cb4-54"></a></span>
-<span id="cb4-57"><a href="#cb4-57"></a><span class="in">```{python}</span></span>
-<span id="cb4-58"><a href="#cb4-58"></a>plot_pdf(st.norm())</span>
-<span id="cb4-59"><a href="#cb4-59"></a><span class="in">```</span></span>
-<span id="cb4-60"><a href="#cb4-60"></a></span>
-<span id="cb4-63"><a href="#cb4-63"></a><span class="in">```{python}</span></span>
-<span id="cb4-64"><a href="#cb4-64"></a>plot_pdf(st.gamma(<span class="dv">2</span>, <span class="dv">5</span>))</span>
-<span id="cb4-65"><a href="#cb4-65"></a><span class="in">```</span></span>
+<div class="sourceCode" id="cb9" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1"></a><span class="co">---</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="an">title:</span><span class="co"> Sliding Window</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="an">date:</span><span class="co"> '2023-01-17'</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="an">categories:</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="co">  - Iteration</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a><span class="co">  - List</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a><span class="an">jupyter:</span></span>
+<span id="cb9-8"><a href="#cb9-8"></a><span class="co">  jupytext:</span></span>
+<span id="cb9-9"><a href="#cb9-9"></a><span class="co">    text_representation:</span></span>
+<span id="cb9-10"><a href="#cb9-10"></a><span class="co">      extension: .qmd</span></span>
+<span id="cb9-11"><a href="#cb9-11"></a><span class="co">      format_name: quarto</span></span>
+<span id="cb9-12"><a href="#cb9-12"></a><span class="co">      format_version: '1.0'</span></span>
+<span id="cb9-13"><a href="#cb9-13"></a><span class="co">      jupytext_version: 1.14.4</span></span>
+<span id="cb9-14"><a href="#cb9-14"></a><span class="co">  kernelspec:</span></span>
+<span id="cb9-15"><a href="#cb9-15"></a><span class="co">    display_name: advent</span></span>
+<span id="cb9-16"><a href="#cb9-16"></a><span class="co">    language: python</span></span>
+<span id="cb9-17"><a href="#cb9-17"></a><span class="co">    name: advent</span></span>
+<span id="cb9-18"><a href="#cb9-18"></a><span class="co">---</span></span>
+<span id="cb9-19"><a href="#cb9-19"></a></span>
+<span id="cb9-20"><a href="#cb9-20"></a><span class="fu">## Problem</span></span>
+<span id="cb9-21"><a href="#cb9-21"></a></span>
+<span id="cb9-22"><a href="#cb9-22"></a>We have some sequence, and we would like to iterate over it using a **sliding window**.</span>
+<span id="cb9-23"><a href="#cb9-23"></a></span>
+<span id="cb9-24"><a href="#cb9-24"></a>:::{.callout-note}</span>
+<span id="cb9-25"><a href="#cb9-25"></a>This is sometimes also called a *rolling window*.</span>
+<span id="cb9-26"><a href="#cb9-26"></a>:::</span>
+<span id="cb9-27"><a href="#cb9-27"></a></span>
+<span id="cb9-28"><a href="#cb9-28"></a><span class="fu">## Solution</span></span>
+<span id="cb9-29"><a href="#cb9-29"></a></span>
+<span id="cb9-30"><a href="#cb9-30"></a>We have a number of different options:</span>
+<span id="cb9-31"><a href="#cb9-31"></a></span>
+<span id="cb9-32"><a href="#cb9-32"></a><span class="ss">1. </span>Using a <span class="in">`generator`</span></span>
+<span id="cb9-33"><a href="#cb9-33"></a><span class="ss">1. </span>Using *NumPy's* <span class="in">`sliding_window_view`</span></span>
+<span id="cb9-34"><a href="#cb9-34"></a><span class="ss">1. </span>Using *Panda's* <span class="in">`rolling`</span> method</span>
+<span id="cb9-35"><a href="#cb9-35"></a></span>
+<span id="cb9-36"><a href="#cb9-36"></a><span class="fu">## Example</span></span>
+<span id="cb9-37"><a href="#cb9-37"></a></span>
+<span id="cb9-38"><a href="#cb9-38"></a>We have the sequence of numbers 1:5, and we'd like to iterate over a sliding window of size 2 and return the sum of the window.</span>
+<span id="cb9-39"><a href="#cb9-39"></a></span>
+<span id="cb9-42"><a href="#cb9-42"></a><span class="in">```{python}</span></span>
+<span id="cb9-43"><a href="#cb9-43"></a>nums <span class="op">=</span> [<span class="op">*</span><span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">6</span>)]</span>
+<span id="cb9-44"><a href="#cb9-44"></a><span class="in">```</span></span>
+<span id="cb9-45"><a href="#cb9-45"></a></span>
+<span id="cb9-46"><a href="#cb9-46"></a><span class="fu">### Using a generator</span></span>
+<span id="cb9-47"><a href="#cb9-47"></a></span>
+<span id="cb9-48"><a href="#cb9-48"></a><span class="at">&gt; </span><span class="in">`sliding_window(seq: Iterable, size: int, start: int = 0)`</span></span>
+<span id="cb9-49"><a href="#cb9-49"></a></span>
+<span id="cb9-52"><a href="#cb9-52"></a><span class="in">```{python}</span></span>
+<span id="cb9-53"><a href="#cb9-53"></a><span class="kw">def</span> sliding_window_gen(seq, size, start<span class="op">=</span><span class="dv">0</span>):</span>
+<span id="cb9-54"><a href="#cb9-54"></a>    <span class="im">from</span> itertools <span class="im">import</span> islice</span>
+<span id="cb9-55"><a href="#cb9-55"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(start, <span class="bu">len</span>(seq)<span class="op">-</span>size<span class="op">+</span><span class="dv">1</span>):</span>
+<span id="cb9-56"><a href="#cb9-56"></a>        <span class="cf">yield</span> <span class="bu">tuple</span>(islice(seq[i:], size))</span>
+<span id="cb9-57"><a href="#cb9-57"></a><span class="in">```</span></span>
+<span id="cb9-58"><a href="#cb9-58"></a></span>
+<span id="cb9-61"><a href="#cb9-61"></a><span class="in">```{python}</span></span>
+<span id="cb9-62"><a href="#cb9-62"></a>slider <span class="op">=</span> sliding_window_gen(nums, <span class="dv">2</span>)</span>
+<span id="cb9-63"><a href="#cb9-63"></a>[<span class="bu">sum</span>(window) <span class="cf">for</span> window <span class="kw">in</span> slider]</span>
+<span id="cb9-64"><a href="#cb9-64"></a><span class="in">```</span></span>
+<span id="cb9-65"><a href="#cb9-65"></a></span>
+<span id="cb9-66"><a href="#cb9-66"></a><span class="fu">### Using NumPy</span></span>
+<span id="cb9-67"><a href="#cb9-67"></a></span>
+<span id="cb9-68"><a href="#cb9-68"></a>We use <span class="in">`sliding_window_view`</span> in *numpy.lib.stride_tricks*.</span>
+<span id="cb9-69"><a href="#cb9-69"></a></span>
+<span id="cb9-72"><a href="#cb9-72"></a><span class="in">```{python}</span></span>
+<span id="cb9-73"><a href="#cb9-73"></a><span class="im">from</span> numpy.lib.stride_tricks <span class="im">import</span> sliding_window_view  <span class="co"># noqa</span></span>
+<span id="cb9-74"><a href="#cb9-74"></a>sliding_window_view(nums, <span class="dv">2</span>).<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb9-75"><a href="#cb9-75"></a><span class="in">```</span></span>
+<span id="cb9-76"><a href="#cb9-76"></a></span>
+<span id="cb9-77"><a href="#cb9-77"></a><span class="fu">### Using Pandas</span></span>
+<span id="cb9-78"><a href="#cb9-78"></a></span>
+<span id="cb9-79"><a href="#cb9-79"></a>We use the <span class="in">`rolling`</span> method of a *pandas.series*.</span>
+<span id="cb9-80"><a href="#cb9-80"></a></span>
+<span id="cb9-83"><a href="#cb9-83"></a><span class="in">```{python}</span></span>
+<span id="cb9-84"><a href="#cb9-84"></a><span class="im">from</span> pandas <span class="im">import</span> Series  <span class="co"># noqa</span></span>
+<span id="cb9-85"><a href="#cb9-85"></a>num_ser <span class="op">=</span> Series(nums)</span>
+<span id="cb9-86"><a href="#cb9-86"></a>num_ser.rolling(<span class="dv">2</span>).<span class="bu">sum</span>()</span>
+<span id="cb9-87"><a href="#cb9-87"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
